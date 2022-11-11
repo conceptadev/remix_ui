@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
-import 'package:remix_ui/components/button/button.dart';
+import 'package:remix_ui/components/button/button.variants.dart';
 import 'package:remix_ui/helpers/color_utils.dart';
 import 'package:remix_ui/tokens/typography.dart';
 
@@ -8,11 +8,11 @@ const buttonColor = Colors.blue;
 final darkButtonColor = buttonColor[700]!;
 final lightButtonColor = buttonColor[200]!.withOpacity(0.3);
 
-final ghostBtnMix = Mix(
+final ghostButtonMix = Mix(
   iconColor(darkButtonColor),
   textColor(darkButtonColor),
   bgColor(Colors.transparent),
-  hover(
+  onHover(
     bgColor(lightButtonColor),
   ),
 );
@@ -24,7 +24,7 @@ final buttonMix = Mix(
   textHeight(1.1),
   fontWeight(FontWeight.w600),
 
-  disabled(
+  onDisabled(
     opacity(0.5),
   ),
 
@@ -66,31 +66,31 @@ final buttonMix = Mix(
   ),
 
   // Variants
-  ButtonVariant.solid(
+  ButtonType.solid(
     iconColor(contrastColor(buttonColor)),
     textColor(contrastColor(buttonColor)),
     bgColor(buttonColor),
-    hover(
+    onHover(
       bgColor(darkButtonColor),
     ),
   ),
 
   // Variants
-  ButtonVariant.outline(
-    apply(ghostBtnMix),
+  ButtonType.outline(
+    apply(ghostButtonMix),
     border(
       color: darkButtonColor,
       width: 1,
     ),
   ),
-  ButtonVariant.ghost(
-    apply(ghostBtnMix),
+  ButtonType.ghost(
+    apply(ghostButtonMix),
   ),
-  ButtonVariant.link(
+  ButtonType.link(
     iconColor(buttonColor),
     textColor(buttonColor),
     bgColor(Colors.transparent),
-    hover(
+    onHover(
       textDecoration(TextDecoration.underline),
     ),
   ),
