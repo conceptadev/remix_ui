@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
-import 'package:remix_ui/components/checkbox/checkbox.dart';
+import 'package:remix_ui/components/checkbox/checkbox.variants.dart';
 import 'package:remix_ui/helpers/color_utils.dart';
 
 const color = Colors.blue;
@@ -15,17 +15,17 @@ Mix get checkboxMix => Mix(
       iconSize(18),
       borderWidth(2),
       borderColor(Colors.grey),
-      disabled(
+      onDisabled(
         opacity(0.5),
       ),
-      hover(
+      onHover(
         borderColor(color),
       ),
       CheckboxState.checked(
         iconColor(contrastColor(color)),
         bgColor(color),
         borderColor(color),
-        hover(
+        onHover(
           iconColor(contrastColor(darkColor)),
           bgColor(darkColor),
           borderColor(darkColor),
@@ -35,6 +35,6 @@ Mix get checkboxMix => Mix(
       CheckboxState.invalid(
         bgColor(Colors.transparent),
         borderColor(Colors.red),
-        hover(),
+        onHover(),
       ),
     );

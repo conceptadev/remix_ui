@@ -1,25 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
 import 'package:remix_ui/components/checkbox/checkbox.mix.dart';
+import 'package:remix_ui/components/checkbox/checkbox.variants.dart';
 
-class CheckboxState extends Variant {
-  CheckboxState._(String name) : super(name);
-  // Types
-  static final checked = CheckboxState._('checkedCheckboxVariant');
-  static final unchecked = CheckboxState._('uncheckedCheckboxVariant');
-  static final invalid = CheckboxState._('invalidCheckboxVariant');
-}
-
-class CheckboxSize extends Variant {
-  CheckboxSize._(String name) : super(name);
-
-  static final xsmall = CheckboxSize._('xsmallCheckboxSize');
-  static final small = CheckboxSize._('smallCheckboxSize');
-  static final medium = CheckboxSize._('mediumCheckboxSize');
-  static final large = CheckboxSize._('largeCheckboxSize');
-}
-
-class Checkbox extends RemixableWidget {
+class Checkbox extends StatelessWidget {
   const Checkbox({
     this.label,
     this.isDisabled = false,
@@ -31,7 +15,8 @@ class Checkbox extends RemixableWidget {
     this.iconUnchecked,
     Key? key,
     Mix? mix,
-  }) : super(mix, key: key);
+  })  : _customMix = mix,
+        super(key: key);
 
   final String? label;
   final bool isDisabled;
@@ -42,31 +27,30 @@ class Checkbox extends RemixableWidget {
   final IconData? iconUnchecked;
   final ValueChanged<bool>? onChanged;
 
-  @override
-  Mix get baseMix => checkboxMix;
+  final Mix? _customMix;
+
+  Mix get mix => checkboxMix.maybeApply(_customMix);
 
   @override
   Widget build(BuildContext context) {
     final onPressedFn = onChanged == null ? null : () => onChanged!(!isChecked);
 
-    final style = Mix.variantSwitcher(mix, {
-      isChecked: CheckboxState.checked,
-      !isChecked: CheckboxState.unchecked,
-    });
+    final shouldHideIcon = iconUnchecked == null && !isChecked;
 
     return Pressable(
       onPressed: isDisabled ? null : onPressedFn,
       child: MixContextBuilder(
-          mix: style,
+          mix: mix,
+          variants: [
+            isChecked ? CheckboxState.checked : CheckboxState.unchecked
+          ],
           builder: (context, mixContext) {
             return Box(
               inherit: true,
               child: IconMix(
                 isChecked ? iconChecked : iconUnchecked,
                 // Hide if no unchecked icon and isChecked false
-                mix: Mix(
-                  hide(iconUnchecked == null && !isChecked),
-                ),
+                mix: Mix(hide(shouldHideIcon)),
               ),
             );
           }),

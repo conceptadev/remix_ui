@@ -1,26 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
 import 'package:remix_ui/components/button/button.mix.dart';
+import 'package:remix_ui/components/button/button.variants.dart';
 
-class ButtonSize extends Variant {
-  ButtonSize._(String name) : super(name);
-  // Sizes
-  static final xsmall = ButtonSize._('xsmallButtonVariant');
-  static final small = ButtonSize._('smallButtonVariant');
-  static final medium = ButtonSize._('mediumButtonVariant');
-  static final large = ButtonSize._('largeButtonVariant');
-}
-
-class ButtonVariant extends Variant {
-  ButtonVariant._(String name) : super(name);
-  // Types
-  static final solid = ButtonVariant._('solidButtonVariant');
-  static final outline = ButtonVariant._('outlineButtonVariant');
-  static final ghost = ButtonVariant._('ghostButtonVariant');
-  static final link = ButtonVariant._('linkButtonVariant');
-}
-
-class Button extends RemixableWidget {
+class Button extends StatelessWidget {
   const Button({
     this.label,
     this.isDisabled = false,
@@ -32,7 +15,8 @@ class Button extends RemixableWidget {
     this.loadingLabel,
     Key? key,
     Mix? mix,
-  }) : super(mix, key: key);
+  })  : _customMix = mix,
+        super(key: key);
 
   final String? label;
   final bool isDisabled;
@@ -40,22 +24,25 @@ class Button extends RemixableWidget {
   final String? loadingLabel;
   final IconData? iconLeft;
   final IconData? iconRight;
-  final ButtonVariant? variant;
+  final ButtonType? variant;
   final ButtonSize? size;
+  final Mix? _customMix;
 
-  @override
-  Mix get baseMix => buttonMix;
+  Mix get _mix {
+    return buttonMix.maybeApply(_customMix);
+  }
 
   Variant get _sizeVariant {
     return size ?? ButtonSize.xsmall;
   }
 
-  Variant get _buttonVariant {
-    return variant ?? ButtonVariant.solid;
+  Variant get _typeVariant {
+    return variant ?? ButtonType.solid;
   }
 
   @override
   Widget build(BuildContext context) {
+    // Render loading indicator
     List<Widget> renderLoading(MixContext mixContext) {
       final size = mixContext.iconProps.size;
       final color = mixContext.iconProps.color;
@@ -75,8 +62,8 @@ class Button extends RemixableWidget {
     return Pressable(
       onPressed: isDisabled || isLoading ? null : () {},
       child: MixContextBuilder(
-          mix: mix,
-          variants: [_sizeVariant, _buttonVariant],
+          mix: _mix,
+          variants: [_sizeVariant, _typeVariant],
           builder: (context, mixContext) {
             return HBox(
               inherit: true,
