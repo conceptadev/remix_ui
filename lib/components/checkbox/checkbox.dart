@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
-import 'package:remix_ui/components/checkbox/checkbox.mix.dart';
+import 'package:remix_ui/components/checkbox/checkbox.style.dart';
 import 'package:remix_ui/components/checkbox/checkbox.variants.dart';
 
 class Checkbox extends StatelessWidget {
@@ -13,10 +13,9 @@ class Checkbox extends StatelessWidget {
     this.onChanged,
     this.iconChecked = Icons.check,
     this.iconUnchecked,
-    Key? key,
-    Mix? mix,
-  })  : _customMix = mix,
-        super(key: key);
+    super.key,
+    CheckboxStyles? style,
+  }) : _customStyle = style;
 
   final String? label;
   final bool isDisabled;
@@ -27,33 +26,36 @@ class Checkbox extends StatelessWidget {
   final IconData? iconUnchecked;
   final ValueChanged<bool>? onChanged;
 
-  final Mix? _customMix;
-
-  Mix get mix => checkboxMix.maybeApply(_customMix);
+  final CheckboxStyles? _customStyle;
 
   @override
   Widget build(BuildContext context) {
+    var selectedVariant =
+        isChecked ? CheckboxState.checked : CheckboxState.unchecked;
+    selectedVariant = isInvalid ? CheckboxState.invalid : selectedVariant;
+
+    final style = CheckboxStyles.defaults()
+        .merge(_customStyle)
+        .selectVariants([selectedVariant]);
+
     final onPressedFn = onChanged == null ? null : () => onChanged!(!isChecked);
 
     final shouldHideIcon = iconUnchecked == null && !isChecked;
 
     return Pressable(
       onPressed: isDisabled ? null : onPressedFn,
-      child: MixContextBuilder(
-          mix: mix,
-          variants: [
-            isChecked ? CheckboxState.checked : CheckboxState.unchecked
-          ],
-          builder: (context, mixContext) {
-            return Box(
-              inherit: true,
-              child: IconMix(
-                isChecked ? iconChecked : iconUnchecked,
-                // Hide if no unchecked icon and isChecked false
-                mix: Mix(hide(shouldHideIcon)),
-              ),
-            );
-          }),
+      child: Box(
+        mix: style.container,
+        child: IconMix(
+          isChecked ? iconChecked : iconUnchecked,
+          // Hide if no unchecked icon and isChecked false
+          mix: StyleMix.chooser(
+            condition: shouldHideIcon,
+            ifTrue: StyleMix.constant,
+            ifFalse: style.icon,
+          ),
+        ),
+      ),
     );
   }
 }

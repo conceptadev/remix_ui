@@ -1,7 +1,7 @@
 import 'package:mix/mix.dart';
 
 class ButtonSize extends Variant {
-  ButtonSize._(String name) : super(name);
+  ButtonSize._(super.name);
   // Sizes
   static final xsmall = ButtonSize._('xsmallButtonVariant');
   static final small = ButtonSize._('smallButtonVariant');
@@ -10,7 +10,7 @@ class ButtonSize extends Variant {
 }
 
 class ButtonType extends Variant {
-  ButtonType._(String name) : super(name);
+  ButtonType._(super.name);
   // Types
   static final solid = ButtonType._('solidButtonVariant');
   static final outline = ButtonType._('outlineButtonVariant');
