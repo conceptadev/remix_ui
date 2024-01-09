@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:remix_ui/components/button/button.dart';
+import 'package:remix_ui/components/button/button.variants.dart';
 import 'package:remix_ui/components/checkbox/checkbox.dart' as x;
 
 void main() {
@@ -47,92 +49,123 @@ class AppShell extends HookWidget {
     // than having to individually change instances of widgets.
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.white,
           // Here we take the value from the AppShell object that was created by
           // the App.build method, and use it to set our appbar title.
           title: Text(title),
         ),
+        backgroundColor: Colors.white,
         body: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
               //   children: [
               //     Button(
-              //       label: 'Solid',
-              //       variant: ButtonVariant.solid,
+              //       label: 'Button',
+              //       type: ButtonType.primary,
               //       // isDisabled: true,
+              //       size: ButtonSize.large,
               //       iconLeft: Icons.face,
+              //       onPressed: () {},
               //     ),
-              //     SizedBox(width: 8),
+              //     const SizedBox(width: 8),
               //     Button(
-              //       label: 'Outline',
-              //       variant: ButtonVariant.outline,
+              //       label: 'Secondary',
+              //       type: ButtonType.secondary,
               //       // isDisabled: true,
               //       // isLoading: true,
               //       loadingLabel: 'Loading',
-              //       iconLeft: Icons.face,
-              //     ),
-              //     SizedBox(width: 8),
-              //     Button(
-              //       label: 'Ghost',
-              //       variant: ButtonVariant.ghost,
-              //       // isDisabled: true,
-              //       iconLeft: Icons.face,
-              //     ),
-              //     SizedBox(width: 8),
-              //     Button(
-              //       label: 'Link',
-              //       variant: ButtonVariant.link,
-              //       // isDisabled: true,
-              //       iconLeft: Icons.face,
-              //     ),
-              //   ],
-              // ),
-              // SizedBox(height: 10),
-              // Row(
-              //   children: [
-              //     Button(
-              //       label: 'XSmall',
-              //       variant: ButtonVariant.solid,
-              //       size: ButtonSize.xsmall,
-              //       iconLeft: Icons.face,
-              //     ),
-              //     SizedBox(width: 8),
-              //     Button(
-              //       label: 'Small',
-              //       variant: ButtonVariant.solid,
-              //       size: ButtonSize.small,
-              //       iconLeft: Icons.face,
-              //     ),
-              //     SizedBox(width: 8),
-              //     Button(
-              //       label: 'Medium',
-              //       variant: ButtonVariant.solid,
-              //       size: ButtonSize.medium,
-              //       iconLeft: Icons.face,
-              //     ),
-              //     SizedBox(width: 8),
-              //     Button(
-              //       label: 'Large',
-              //       variant: ButtonVariant.solid,
               //       size: ButtonSize.large,
               //       iconLeft: Icons.face,
+              //       onPressed: () {},
+              //     ),
+              //     const SizedBox(width: 8),
+              //     Button(
+              //       label: 'Destructive',
+              //       type: ButtonType.destructive,
+              //       size: ButtonSize.large,
+              //       // isDisabled: true,
+              //       iconLeft: Icons.face,
+              //       onPressed: () {},
+              //     ),
+              //     const SizedBox(width: 8),
+              //     Button(
+              //       label: 'Outline',
+              //       type: ButtonType.outline,
+              //       size: ButtonSize.large,
+              //       // isDisabled: true,
+              //       iconLeft: Icons.face,
+              //       onPressed: () {},
+              //     ),
+              //     Button(
+              //       label: 'Ghost',
+              //       type: ButtonType.ghost,
+              //       size: ButtonSize.large,
+              //       // isDisabled: true,
+              //       iconLeft: Icons.face,
+              //       onPressed: () {},
+              //     ),
+              //     Button(
+              //       label: 'Link',
+              //       type: ButtonType.link,
+              //       size: ButtonSize.large,
+              //       // isDisabled: true,
+              //       iconLeft: Icons.face,
+              //       onPressed: () {},
               //     ),
               //   ],
               // ),
               // SizedBox(height: 10),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  x.Checkbox(
-                    isChecked: checked.value,
-                    isInvalid: checked.value,
-                    onChanged: (value) {
-                      checked.value = value;
-                    },
-                  )
+                  Button(
+                    label: 'XSmall',
+                    type: ButtonType.primary,
+                    size: ButtonSize.xsmall,
+                    iconLeft: Icons.face,
+                    onPressed: () {},
+                  ),
+                  SizedBox(width: 8),
+                  Button(
+                    label: 'Small',
+                    type: ButtonType.primary,
+                    size: ButtonSize.small,
+                    iconLeft: Icons.face,
+                    onPressed: () {},
+                  ),
+                  SizedBox(width: 8),
+                  Button(
+                    label: 'Medium',
+                    type: ButtonType.primary,
+                    size: ButtonSize.medium,
+                    iconLeft: Icons.face,
+                    onPressed: () {},
+                  ),
+                  SizedBox(width: 8),
+                  Button(
+                    label: 'Large',
+                    type: ButtonType.primary,
+                    size: ButtonSize.large,
+                    iconLeft: Icons.face,
+                    onPressed: () {},
+                  ),
                 ],
-              )
+              ),
+              // Row(
+              //   children: [
+              //     x.Checkbox(
+              //       isChecked: checked.value,
+              //       isInvalid: checked.value,
+              //       onChanged: (value) {
+              //         checked.value = value;
+              //       },
+              //     )
+              //   ],
+              // )
             ],
           ),
         ) // This trailing comma makes auto-formatting nicer for build methods.

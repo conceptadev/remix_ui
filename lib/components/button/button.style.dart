@@ -4,30 +4,18 @@ import 'package:remix_ui/components/button/button.variants.dart';
 import 'package:remix_ui/helpers/color_utils.dart';
 import 'package:remix_ui/tokens/typography.dart';
 
-const buttonColor = Colors.blue;
-final darkButtonColor = buttonColor[700]!;
-final lightButtonColor = buttonColor[200]!.withOpacity(0.3);
+import '../../factory/stylable_component.dart';
 
-abstract class MixableStyle<T extends MixableStyle<T>> {
-  const MixableStyle();
-
-  MixableStyle<T> merge(covariant MixableStyle<T>? other);
-
-  MixableStyle<T> selectVariants(List<Variant> variants);
-
-  MixableStyle<T> copyWith();
-}
-
-class ButtonStyles extends MixableStyle<ButtonStyles> {
+class ButtonStyles extends StylableComponent<ButtonStyles> {
   const ButtonStyles({
     required this.container,
     required this.icon,
     required this.label,
   });
 
-  final StyleMix container;
-  final StyleMix icon;
-  final StyleMix label;
+  final Style container;
+  final Style icon;
+  final Style label;
 
   factory ButtonStyles.defaults() {
     return ButtonStyles(
@@ -40,22 +28,22 @@ class ButtonStyles extends MixableStyle<ButtonStyles> {
   @override
   ButtonStyles selectVariants(List<Variant> variants) {
     return ButtonStyles(
-      container: container.selectVariants(variants),
-      icon: icon.selectVariants(variants),
-      label: label.selectVariants(variants),
+      container: container.variantList(variants),
+      icon: icon.variantList(variants),
+      label: label.variantList(variants),
     );
   }
 
   @override
   ButtonStyles copyWith({
-    StyleMix? container,
-    StyleMix? icon,
-    StyleMix? label,
+    Style? container,
+    Style? icon,
+    Style? label,
   }) {
     return ButtonStyles(
-      container: this.container.mergeNullable(container),
-      icon: this.icon.mergeNullable(icon),
-      label: this.label.mergeNullable(label),
+      container: this.container.merge(container),
+      icon: this.icon.merge(icon),
+      label: this.label.merge(label),
     );
   }
 
@@ -69,164 +57,122 @@ class ButtonStyles extends MixableStyle<ButtonStyles> {
   }
 }
 
-final _container = StyleMix(
-  mainAxisSize(
-    MainAxisSize.min,
-  ),
-  onDisabled(
-    opacity(0.5),
-  ),
-  rounded(4),
-  gap(4),
+final _container = Style(
   ButtonSize.xsmall(
-    paddingSymmetric(
-      horizontal: 8,
-      vertical: 8,
-    ),
+    box.padding.horizontal(8),
+    box.padding.vertical(4),
   ),
   ButtonSize.small(
-    paddingSymmetric(
-      horizontal: 16,
-      vertical: 10,
-    ),
+    box.padding.horizontal(12),
+    box.padding.vertical(6),
   ),
   ButtonSize.medium(
-    gap(8),
-    rounded(6),
-    paddingSymmetric(
-      horizontal: 18,
-      vertical: 10,
-    ),
+    box.padding.horizontal(16),
+    box.padding.vertical(8),
   ),
   ButtonSize.large(
-    gap(12),
-    rounded(6),
-    paddingSymmetric(
-      horizontal: 22,
-      vertical: 12,
-    ),
+    box.padding.horizontal(20),
+    box.padding.vertical(10),
   ),
-
-  ButtonType.solid(
-    backgroundColor(buttonColor),
+  ButtonType.primary(
+    box.decoration.color.black(),
     onHover(
-      backgroundColor(darkButtonColor),
+      box.decoration.color.black87(),
     ),
   ),
-
-  // Variants
+  ButtonType.secondary(
+    box.decoration.color.grey.shade200(),
+    onHover(
+      box.decoration.color.grey.shade100(),
+    ),
+  ),
+  ButtonType.destructive(
+    box.decoration.color.redAccent(),
+    onHover(
+      box.decoration.color.redAccent.shade200(),
+    ),
+  ),
   ButtonType.outline(
-    backgroundColor(
-      Colors.transparent,
-    ),
-    border(
-      color: darkButtonColor,
-      width: 1,
-    ),
-    onHover(
-      backgroundColor(
-        lightButtonColor,
-      ),
-    ),
+    box.decoration.color(Colors.white),
+    box.decoration.border(width: 1.5, color: Colors.black12),
+    box.decoration.boxShadow.color(Colors.black12.withOpacity(0.1)),
+    box.decoration.boxShadow.blurRadius(1),
   ),
   ButtonType.ghost(
-    backgroundColor(
-      Colors.transparent,
-    ),
+    box.decoration.color(Colors.transparent),
     onHover(
-      backgroundColor(
-        lightButtonColor,
-      ),
+      box.decoration.color(Colors.black12),
     ),
   ),
   ButtonType.link(
-    backgroundColor(
-      Colors.transparent,
-    ),
+    box.decoration.color(Colors.transparent),
   ),
+  box.decoration.borderRadius(6),
 );
 
-final _icon = StyleMix(
+final _icon = Style(
   ButtonSize.xsmall(
-    iconSize(remixTextSize.xs),
+    icon.size(remixTextSize.xs),
   ),
   ButtonSize.small(
-    iconSize(remixTextSize.sm),
+    icon.size(remixTextSize.sm),
   ),
   ButtonSize.medium(
-    iconSize(remixTextSize.md),
+    icon.size(remixTextSize.md),
   ),
   ButtonSize.large(
-    iconSize(remixTextSize.lg),
+    icon.size(remixTextSize.lg),
   ),
-
-  ButtonType.solid(
-    iconColor(contrastColor(buttonColor)),
+  ButtonType.primary(
+    icon.color(Colors.white),
   ),
-
   // Variants
   ButtonType.outline(
-    iconColor(darkButtonColor),
-  ),
+      // iconColor(darkButtonColor),
+      ),
   ButtonType.ghost(
-    iconColor(darkButtonColor),
-  ),
+      // iconColor(darkButtonColor),
+      ),
   ButtonType.link(
-    iconColor(buttonColor),
-  ),
+      // iconColor(buttonColor),
+      ),
 );
 
-final _label = StyleMix(
-  textStyle(
-    height: 1.1,
-    fontWeight: FontWeight.w600,
-  ),
+final _label = Style(
+  text.style.height(1.1),
+  text.style.letterSpacing(0.5),
+  text.style.fontWeight(FontWeight.w600),
   ButtonSize.xsmall(
-    textStyle(
-      fontSize: remixTextSize.xs,
-    ),
+    text.style.fontSize(remixTextSize.xs),
   ),
   ButtonSize.small(
-    textStyle(
-      fontSize: remixTextSize.sm,
-    ),
+    text.style.fontSize(remixTextSize.sm),
   ),
   ButtonSize.medium(
-    textStyle(
-      fontSize: remixTextSize.md,
-    ),
+    text.style.fontSize(remixTextSize.md),
   ),
   ButtonSize.large(
-    textStyle(
-      fontSize: remixTextSize.lg,
-    ),
+    text.style.fontSize(remixTextSize.lg),
   ),
-
-  // Variants
-  ButtonType.solid(
-    textStyle(
-      color: contrastColor(buttonColor),
-    ),
+  ButtonType.primary(
+    text.style.color.white(),
   ),
-
+  ButtonType.secondary(
+    text.style.color.black87(),
+  ),
+  ButtonType.destructive(
+    text.style.color.white(),
+  ),
   ButtonType.outline(
-    textStyle(
-      color: darkButtonColor,
-    ),
+    text.style.color.black(),
   ),
   ButtonType.ghost(
-    textStyle(
-      color: darkButtonColor,
-    ),
+    text.style.color.black(),
   ),
   ButtonType.link(
-    textStyle(
-      color: buttonColor,
-    ),
+    text.style.color.black(),
     onHover(
-      textStyle(
-        decoration: TextDecoration.underline,
-      ),
+      text.style.decoration(TextDecoration.underline),
     ),
   ),
 );

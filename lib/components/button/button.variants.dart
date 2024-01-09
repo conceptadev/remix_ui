@@ -1,19 +1,21 @@
 import 'package:mix/mix.dart';
 
 class ButtonSize extends Variant {
-  ButtonSize._(super.name);
+  const ButtonSize._(super.name);
   // Sizes
-  static final xsmall = ButtonSize._('xsmallButtonVariant');
-  static final small = ButtonSize._('smallButtonVariant');
-  static final medium = ButtonSize._('mediumButtonVariant');
-  static final large = ButtonSize._('largeButtonVariant');
+  static const xsmall = ButtonSize._('xsmallButtonVariant');
+  static const small = ButtonSize._('smallButtonVariant');
+  static const medium = ButtonSize._('mediumButtonVariant');
+  static const large = ButtonSize._('largeButtonVariant');
 }
 
 class ButtonType extends Variant {
-  ButtonType._(super.name);
+  const ButtonType._(super.name);
   // Types
-  static final solid = ButtonType._('solidButtonVariant');
-  static final outline = ButtonType._('outlineButtonVariant');
-  static final ghost = ButtonType._('ghostButtonVariant');
-  static final link = ButtonType._('linkButtonVariant');
+  static const primary = ButtonType._('primaryButtonVariant');
+  static const secondary = ButtonType._('secondaryButtonVariant');
+  static const destructive = ButtonType._('destructiveButtonVariant');
+  static const outline = ButtonType._('outlineButtonVariant');
+  static const ghost = ButtonType._('ghostButtonVariant');
+  static const link = ButtonType._('linkButtonVariant');
 }
