@@ -1,98 +1,91 @@
 import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
-import 'package:remix_ui/components/button/button.style.dart';
 import 'package:remix_ui/components/checkbox/checkbox.variants.dart';
-import 'package:remix_ui/helpers/color_utils.dart';
 
-const color = Colors.blue;
-final darkColor = color[700]!;
-final lightColor = color[200]!.withOpacity(0.3);
-
-class CheckboxStyles extends MixableStyle<CheckboxStyles> {
+class CheckboxStyles extends StyleRecipe<CheckboxStyles> {
   const CheckboxStyles({
-    required this.container,
+    required this.outerContainer,
+    required this.innerContainer,
     required this.icon,
+    required this.label,
   });
 
-  final StyleMix container;
-  final StyleMix icon;
+  final Style outerContainer;
+  final Style innerContainer;
+  final Style icon;
+  final Style label;
 
   factory CheckboxStyles.defaults() {
     return CheckboxStyles(
-      container: _container,
-      icon: _icon,
+      outerContainer: _outerContainerStyle(),
+      innerContainer: _innerContainerStyle(),
+      icon: _iconStyle(),
+      label: _labelStyle(),
     );
   }
 
   @override
   CheckboxStyles selectVariants(List<Variant> variants) {
     return CheckboxStyles(
-      container: container.selectVariants(variants),
-      icon: icon.selectVariants(variants),
+      outerContainer: outerContainer.applyVariants(variants),
+      innerContainer: innerContainer.applyVariants(variants),
+      icon: icon.applyVariants(variants),
+      label: label.applyVariants(variants),
     );
   }
 
   @override
   CheckboxStyles copyWith({
-    StyleMix? container,
-    StyleMix? icon,
-    StyleMix? label,
+    Style? outerContainer,
+    Style? innerContainer,
+    Style? icon,
+    Style? label,
   }) {
     return CheckboxStyles(
-      container: this.container.mergeNullable(container),
-      icon: this.icon.mergeNullable(icon),
+      innerContainer: this.innerContainer.merge(innerContainer),
+      icon: this.icon.merge(icon),
+      label: this.label.merge(label),
+      outerContainer: this.outerContainer.merge(outerContainer),
     );
   }
 
   @override
   CheckboxStyles merge(CheckboxStyles? other) {
     return copyWith(
-      container: other?.container,
+      outerContainer: other?.outerContainer,
+      innerContainer: other?.innerContainer,
       icon: other?.icon,
+      label: other?.label,
     );
   }
 }
 
-final _container = StyleMix(
-  // Base styles
-  rounded(5),
-  width(25),
-  height(25),
-  border(color: Colors.grey, width: 2),
+Style _outerContainerStyle() => Style(
+      flex.mainAxisAlignment.center(),
+      flex.crossAxisAlignment.center(),
+      flex.mainAxisSize.min(),
+      flex.gap(6),
+    );
 
-  // State changes
-  onDisabled(
-    opacity(0.5),
-  ),
-  onHover(
-    border(color: color),
-  ),
+Style _innerContainerStyle() => Style(
+      box.borderRadius.all(7),
+      width(20),
+      height(20),
+      border(color: const Color.fromARGB(115, 3, 3, 3), width: 1.5),
+      CheckboxState.checked(
+        backgroundColor(Colors.black87),
+      ),
+    );
 
-  // Variants
-  CheckboxState.checked(
-    backgroundColor(color),
-    border(color: color),
-    onHover(
-      backgroundColor(darkColor),
-      border(color: darkColor),
-    ),
-  ),
+Style _iconStyle() => Style(
+      CheckboxState.checked(
+        icon.color.white(),
+        icon.size(15),
+      ),
+    );
 
-  CheckboxState.unchecked(),
-  CheckboxState.invalid(
-    backgroundColor(Colors.transparent),
-    border(color: Colors.red),
-  ),
-);
-
-final _icon = StyleMix(
-  iconSize(18),
-  CheckboxState.checked(
-    iconColor(contrastColor(color)),
-    onHover(
-      iconColor(contrastColor(darkColor)),
-    ),
-  ),
-  CheckboxState.unchecked(),
-  CheckboxState.invalid(),
-);
+Style _labelStyle() => Style(
+      text.style.fontSize(16),
+      text.style.bold(),
+      text.style.color.black87(),
+    );

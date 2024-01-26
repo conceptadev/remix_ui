@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
 import 'package:remix_ui/components/button/button.variants.dart';
-import 'package:remix_ui/helpers/color_utils.dart';
-import 'package:remix_ui/tokens/typography.dart';
 
-import '../../factory/stylable_component.dart';
-
-class ButtonStyles extends StylableComponent<ButtonStyles> {
+class ButtonStyles extends StyleRecipe<ButtonStyles> {
   const ButtonStyles({
-    required this.container,
-    required this.icon,
-    required this.label,
+    this.container = const Style.empty(),
+    this.icon = const Style.empty(),
+    this.label = const Style.empty(),
   });
 
   final Style container;
@@ -20,17 +16,17 @@ class ButtonStyles extends StylableComponent<ButtonStyles> {
   factory ButtonStyles.defaults() {
     return ButtonStyles(
       container: _container,
-      icon: _icon,
-      label: _label,
+      icon: _icon(),
+      label: _label(),
     );
   }
 
   @override
   ButtonStyles selectVariants(List<Variant> variants) {
     return ButtonStyles(
-      container: container.variantList(variants),
-      icon: icon.variantList(variants),
-      label: label.variantList(variants),
+      container: container.applyVariants(variants),
+      icon: icon.applyVariants(variants),
+      label: label.applyVariants(variants),
     );
   }
 
@@ -58,6 +54,10 @@ class ButtonStyles extends StylableComponent<ButtonStyles> {
 }
 
 final _container = Style(
+  flex.gap(6),
+  flex.mainAxisAlignment.center(),
+  flex.crossAxisAlignment.center(),
+  flex.mainAxisSize.min(),
   ButtonSize.xsmall(
     box.padding.horizontal(8),
     box.padding.vertical(4),
@@ -93,7 +93,7 @@ final _container = Style(
     ),
   ),
   ButtonType.outline(
-    box.decoration.color(Colors.white),
+    box.decoration.color.white(),
     box.decoration.border(width: 1.5, color: Colors.black12),
     box.decoration.boxShadow.color(Colors.black12.withOpacity(0.1)),
     box.decoration.boxShadow.blurRadius(1),
@@ -110,69 +110,62 @@ final _container = Style(
   box.decoration.borderRadius(6),
 );
 
-final _icon = Style(
-  ButtonSize.xsmall(
-    icon.size(remixTextSize.xs),
-  ),
-  ButtonSize.small(
-    icon.size(remixTextSize.sm),
-  ),
-  ButtonSize.medium(
-    icon.size(remixTextSize.md),
-  ),
-  ButtonSize.large(
-    icon.size(remixTextSize.lg),
-  ),
-  ButtonType.primary(
-    icon.color(Colors.white),
-  ),
-  // Variants
-  ButtonType.outline(
-      // iconColor(darkButtonColor),
+Style _icon() => Style(
+      ButtonSize.xsmall(
+        icon.size(12),
       ),
-  ButtonType.ghost(
-      // iconColor(darkButtonColor),
+      ButtonSize.small(
+        icon.size(14),
       ),
-  ButtonType.link(
-      // iconColor(buttonColor),
+      ButtonSize.medium(
+        icon.size(16),
       ),
-);
+      ButtonSize.large(
+        icon.size(18),
+      ),
+      (ButtonType.primary | ButtonType.destructive)(
+        icon.color(Colors.white),
+      ),
+      (ButtonType.link | ButtonType.secondary | ButtonType.outline)(
+        icon.color(Colors.black),
+      ),
+    );
 
-final _label = Style(
-  text.style.height(1.1),
-  text.style.letterSpacing(0.5),
-  text.style.fontWeight(FontWeight.w600),
-  ButtonSize.xsmall(
-    text.style.fontSize(remixTextSize.xs),
-  ),
-  ButtonSize.small(
-    text.style.fontSize(remixTextSize.sm),
-  ),
-  ButtonSize.medium(
-    text.style.fontSize(remixTextSize.md),
-  ),
-  ButtonSize.large(
-    text.style.fontSize(remixTextSize.lg),
-  ),
-  ButtonType.primary(
-    text.style.color.white(),
-  ),
-  ButtonType.secondary(
-    text.style.color.black87(),
-  ),
-  ButtonType.destructive(
-    text.style.color.white(),
-  ),
-  ButtonType.outline(
-    text.style.color.black(),
-  ),
-  ButtonType.ghost(
-    text.style.color.black(),
-  ),
-  ButtonType.link(
-    text.style.color.black(),
-    onHover(
-      text.style.decoration(TextDecoration.underline),
-    ),
-  ),
-);
+Style _label() => Style(
+      text.style.height(1.1),
+      text.style.letterSpacing(0.5),
+      text.style.fontWeight(FontWeight.w600),
+      ButtonSize.xsmall(
+        text.style.fontSize(12),
+      ),
+      ButtonSize.small(
+        text.style.fontSize(14),
+      ),
+      ButtonSize.medium(
+        text.style.fontSize(16),
+      ),
+      ButtonSize.large(
+        text.style.fontSize(18),
+      ),
+      ButtonType.primary(
+        text.style.color.white(),
+      ),
+      ButtonType.secondary(
+        text.style.color.black87(),
+      ),
+      ButtonType.destructive(
+        text.style.color.white(),
+      ),
+      ButtonType.outline(
+        text.style.color.black(),
+      ),
+      ButtonType.ghost(
+        text.style.color.black(),
+      ),
+      ButtonType.link(
+        text.style.color.black(),
+        onHover(
+          text.style.decoration(TextDecoration.underline),
+        ),
+      ),
+    );

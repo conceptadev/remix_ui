@@ -3,8 +3,8 @@ import 'package:mix/mix.dart';
 import 'package:remix_ui/components/button/button.style.dart';
 import 'package:remix_ui/components/button/button.variants.dart';
 
-class Button extends StatelessWidget {
-  const Button({
+class RemixButton extends StatelessWidget {
+  const RemixButton({
     super.key,
     this.label,
     this.isDisabled = false,
@@ -29,41 +29,43 @@ class Button extends StatelessWidget {
   final VoidCallback? onPressed;
   final ButtonStyles? _customStyle;
 
-  /// Build the child widgets based on [isLoading] state
-  List<Widget> _buildChildren(ButtonStyles style) {
+  List<Widget> _buildChildren(BuildContext context, ButtonStyles style) {
     if (isLoading) {
-      // return _buildLoadingChildren(style);
+      return _buildLoadingChildren(context, style);
     }
     return _buildDefaultChildren(style);
   }
 
-  /// Build the loading state child widgets
-  // List<Widget> _buildLoadingChildren(ButtonStyles style) => [
-  //       MixBuilder(
-  //         mix: style.icon,
-  //         builder: (mix) => _buildLoadingIndicator(mix),
-  //       ),
-  //       if (loadingLabel != null) TextMix(loadingLabel!, mix: style.label),
-  //     ];
+  List<Widget> _buildLoadingChildren(
+    BuildContext context,
+    ButtonStyles buttonStyle,
+  ) =>
+      [
+        _buildLoadingIndicator(MixData.create(context, buttonStyle.icon)),
+        if (loadingLabel != null)
+          StyledText(
+            loadingLabel!,
+            style: buttonStyle.label,
+          ),
+      ];
 
-  // /// Build the loading indicator
-  // Widget _buildLoadingIndicator(MixData mix) {
-  //   final icon = IconDescriptor.fromContext(mix);
+  Widget _buildLoadingIndicator(MixData mix) {
+    final icon = IconSpec.of(mix);
+    const indicatorWidth = 2.5;
 
-  //   return SizedBox(
-  //     width: icon.size,
-  //     height: icon.size,
-  //     child: CircularProgressIndicator(
-  //       strokeWidth: icon.size / 6,
-  //       color: icon.color,
-  //     ),
-  //   );
-  // }
+    return SizedBox(
+      width: icon.size,
+      height: icon.size,
+      child: CircularProgressIndicator(
+        strokeWidth: indicatorWidth,
+        color: icon.color,
+      ),
+    );
+  }
 
-  /// Build the default state child widgets (non-loading)
   List<Widget> _buildDefaultChildren(ButtonStyles style) => [
         if (iconLeft != null) StyledIcon(iconLeft, style: style.icon),
-        StyledText(label ?? "", style: style.label),
+        if (label != null) StyledText(label!, style: style.label),
         if (iconRight != null) StyledIcon(iconRight, style: style.icon),
       ];
 
@@ -72,14 +74,11 @@ class Button extends StatelessWidget {
     final style = ButtonStyles.defaults().merge(_customStyle).selectVariants(
       [size, type],
     );
-    return Pressable(
+    return PressableBox(
       onPressed: isDisabled || isLoading ? null : onPressed,
-      child: Box(
+      child: HBox(
         style: style.container,
-        child: StyledText(
-          label ?? "Lucas",
-          style: style.label,
-        ),
+        children: _buildChildren(context, style),
       ),
     );
   }
