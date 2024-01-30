@@ -21,6 +21,10 @@ class RemixRadio extends StatelessWidget {
 
   final RadioStyles? _customStyle;
 
+  void Function()? _handleOnChange() {
+    return onChanged == null || disabled ? null : () => onChanged!(!active);
+  }
+
   @override
   Widget build(BuildContext context) {
     var variant = active ? RadioState.active : RadioState.inactive;
@@ -29,8 +33,7 @@ class RemixRadio extends StatelessWidget {
         RadioStyles.defaults().merge(_customStyle).selectVariants([variant]);
 
     return PressableBox(
-      onPressed:
-          onChanged == null || disabled ? null : () => onChanged!(!active),
+      onPressed: _handleOnChange,
       child: HBox(
         style: style.row,
         children: [

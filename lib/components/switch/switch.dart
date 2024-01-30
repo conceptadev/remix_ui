@@ -19,6 +19,10 @@ class RemixSwitch extends StatelessWidget {
 
   final SwitchStyles? _customStyle;
 
+  void Function()? _handleOnChange() {
+    return onChanged == null || disabled ? null : () => onChanged!(!active);
+  }
+
   @override
   Widget build(BuildContext context) {
     var variant = active ? SwitchState.active : SwitchState.inactive;
@@ -27,8 +31,7 @@ class RemixSwitch extends StatelessWidget {
         SwitchStyles.defaults().merge(_customStyle).selectVariants([variant]);
 
     return PressableBox(
-      onPressed:
-          onChanged == null || disabled ? null : () => onChanged!(!active),
+      onPressed: _handleOnChange,
       style: style.outerContainer,
       child: Box(
         style: style.innerContainer,
