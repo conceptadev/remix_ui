@@ -5,22 +5,25 @@ import 'switch.variants.dart';
 
 class SwitchStyles extends StyleRecipe<SwitchStyles> {
   const SwitchStyles({
-    required this.outerContainer,
-    required this.innerContainer,
+    this.outerContainer = const Style.empty(),
+    this.innerContainer = const Style.empty(),
   });
 
   final Style outerContainer;
   final Style innerContainer;
 
-  factory SwitchStyles.defaults() {
+  factory SwitchStyles.build([
+    SwitchStyles? other,
+    List<Variant> variants = const [],
+  ]) {
     return SwitchStyles(
       outerContainer: _outerContainerStyle(),
       innerContainer: _innerContainerStyle(),
-    );
+    ).merge(other).applyVariants(variants);
   }
 
   @override
-  SwitchStyles selectVariants(List<Variant> variants) {
+  SwitchStyles applyVariants(List<Variant> variants) {
     return SwitchStyles(
       outerContainer: outerContainer.applyVariants(variants),
       innerContainer: innerContainer.applyVariants(variants),

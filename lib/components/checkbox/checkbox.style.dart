@@ -15,17 +15,18 @@ class CheckboxStyles extends StyleRecipe<CheckboxStyles> {
   final Style icon;
   final Style label;
 
-  factory CheckboxStyles.defaults() {
+  factory CheckboxStyles.build(
+      [CheckboxStyles? other, List<Variant> variants = const []]) {
     return CheckboxStyles(
       outerContainer: _outerContainerStyle(),
       innerContainer: _innerContainerStyle(),
       icon: _iconStyle(),
       label: _labelStyle(),
-    );
+    ).merge(other).applyVariants(variants);
   }
 
   @override
-  CheckboxStyles selectVariants(List<Variant> variants) {
+  CheckboxStyles applyVariants(List<Variant> variants) {
     return CheckboxStyles(
       outerContainer: outerContainer.applyVariants(variants),
       innerContainer: innerContainer.applyVariants(variants),

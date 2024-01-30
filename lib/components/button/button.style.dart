@@ -21,8 +21,19 @@ class ButtonStyles extends StyleRecipe<ButtonStyles> {
     );
   }
 
+  factory ButtonStyles.build([
+    ButtonStyles? other,
+    List<Variant> variants = const [],
+  ]) {
+    return ButtonStyles(
+      container: _container,
+      icon: _icon(),
+      label: _label(),
+    ).merge(other).applyVariants(variants);
+  }
+
   @override
-  ButtonStyles selectVariants(List<Variant> variants) {
+  ButtonStyles applyVariants(List<Variant> variants) {
     return ButtonStyles(
       container: container.applyVariants(variants),
       icon: icon.applyVariants(variants),

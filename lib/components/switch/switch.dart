@@ -27,8 +27,7 @@ class RemixSwitch extends StatelessWidget {
   Widget build(BuildContext context) {
     var variant = active ? SwitchState.active : SwitchState.inactive;
 
-    final style =
-        SwitchStyles.defaults().merge(_customStyle).selectVariants([variant]);
+    final style = SwitchStyles.build(_customStyle, [variant]);
 
     return PressableBox(
       onPressed: _handleOnChange,

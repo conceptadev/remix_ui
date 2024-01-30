@@ -29,8 +29,7 @@ class RemixRadio extends StatelessWidget {
   Widget build(BuildContext context) {
     var variant = active ? RadioState.active : RadioState.inactive;
 
-    final style =
-        RadioStyles.defaults().merge(_customStyle).selectVariants([variant]);
+    final style = RadioStyles.build(_customStyle, [variant]);
 
     return PressableBox(
       onPressed: _handleOnChange,

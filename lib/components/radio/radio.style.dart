@@ -5,10 +5,10 @@ import 'radio.variants.dart';
 
 class RadioStyles extends StyleRecipe<RadioStyles> {
   const RadioStyles({
-    required this.outerContainer,
-    required this.innerContainer,
-    required this.label,
-    required this.row,
+    this.outerContainer = const Style.empty(),
+    this.innerContainer = const Style.empty(),
+    this.label = const Style.empty(),
+    this.row = const Style.empty(),
   });
 
   final Style outerContainer;
@@ -16,17 +16,18 @@ class RadioStyles extends StyleRecipe<RadioStyles> {
   final Style label;
   final Style row;
 
-  factory RadioStyles.defaults() {
+  factory RadioStyles.build(
+      [RadioStyles? other, List<Variant> variants = const []]) {
     return RadioStyles(
       outerContainer: _outerContainerStyle(),
       innerContainer: _innerContainerStyle(),
       label: _labelStyle(),
       row: _hboxStyle(),
-    );
+    ).merge(other).applyVariants(variants);
   }
 
   @override
-  RadioStyles selectVariants(List<Variant> variants) {
+  RadioStyles applyVariants(List<Variant> variants) {
     return RadioStyles(
       outerContainer: outerContainer.applyVariants(variants),
       innerContainer: innerContainer.applyVariants(variants),

@@ -28,8 +28,7 @@ class RemixCheckbox extends StatelessWidget {
   Widget build(BuildContext context) {
     var variant = isChecked ? CheckboxState.checked : CheckboxState.unchecked;
 
-    final style =
-        CheckboxStyles.defaults().merge(_customStyle).selectVariants([variant]);
+    final style = CheckboxStyles.build(_customStyle, [variant]);
 
     return Pressable(
       onPressed:
