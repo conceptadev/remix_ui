@@ -5,7 +5,7 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 @widgetbook.UseCase(
   name: 'with title and icon',
-  type: RemixCheckbox, // Changed from RemixButton to RemixCheckbox
+  type: RemixCheckbox,
 )
 Widget buildCheckboxUseCase(BuildContext context) {
   return Center(
