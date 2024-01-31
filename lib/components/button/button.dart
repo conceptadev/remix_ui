@@ -71,7 +71,7 @@ class RemixButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final style = ButtonStyles.defaults().merge(_customStyle).selectVariants(
+    final style = ButtonStyles.defaults().merge(_customStyle).applyVariants(
       [size, type],
     );
     return PressableBox(
