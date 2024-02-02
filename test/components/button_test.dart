@@ -59,4 +59,42 @@ void main() {
       expect((iconRow.children.last as StyledIcon).icon, Icons.arrow_forward);
     });
   });
+
+  testWidgets('when disabled must not call onPressed',
+      (WidgetTester tester) async {
+    bool didCallOnPressed = false;
+
+    await tester.pumpWidget(MaterialApp(
+      home: RemixButton(
+        label: 'Disabled Button',
+        onPressed: () {
+          didCallOnPressed = true;
+        },
+        isDisabled: true,
+      ),
+    ));
+
+    await tester.tap(find.byType(RemixButton));
+    await tester.pumpAndSettle(const Duration(milliseconds: 200));
+
+    expect(didCallOnPressed, false);
+  });
+
+  testWidgets('when enabled must call onPressed', (WidgetTester tester) async {
+    bool didCallOnPressed = false;
+
+    await tester.pumpWidget(MaterialApp(
+      home: RemixButton(
+        label: 'Disabled Button',
+        onPressed: () {
+          didCallOnPressed = true;
+        },
+      ),
+    ));
+
+    await tester.tap(find.byType(RemixButton));
+    await tester.pumpAndSettle(const Duration(milliseconds: 200));
+
+    expect(didCallOnPressed, isTrue);
+  });
 }
