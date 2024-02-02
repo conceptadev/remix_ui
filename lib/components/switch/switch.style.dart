@@ -12,14 +12,11 @@ class SwitchStyles extends StyleRecipe<SwitchStyles> {
   final Style outerContainer;
   final Style innerContainer;
 
-  factory SwitchStyles.build([
-    SwitchStyles? other,
-    List<Variant> variants = const [],
-  ]) {
+  factory SwitchStyles.baseForm() {
     return SwitchStyles(
       outerContainer: _outerContainerStyle(),
       innerContainer: _innerContainerStyle(),
-    ).merge(other).applyVariants(variants);
+    );
   }
 
   @override
@@ -52,16 +49,19 @@ class SwitchStyles extends StyleRecipe<SwitchStyles> {
 
 Style _outerContainerStyle() => Style(
       box.width(32),
-      box.height(20),
-      padding.all(2),
-      box.borderRadius.all(10),
+      box.height(16),
+      border.all.width(2),
+      border.all.strokeAlign(BorderSide.strokeAlignOutside),
+      box.borderRadius.all(20),
       SwitchState.active(
-        box.color.white(),
+        box.color.black(),
+        border.all.color.black(),
         box.alignment.centerRight(),
       ),
       SwitchState.inactive(
         box.alignment.centerLeft(),
-        box.color.grey.shade700(),
+        box.color.grey.shade300(),
+        border.all.color.grey.shade300(),
       ),
     );
 
@@ -69,5 +69,5 @@ Style _innerContainerStyle() => Style(
       box.borderRadius.all(10),
       width(16),
       height(16),
-      box.color(Colors.black),
+      box.color.white(),
     );

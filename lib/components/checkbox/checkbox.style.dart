@@ -4,31 +4,30 @@ import 'package:remix_ui/components/checkbox/checkbox.variants.dart';
 
 class CheckboxStyles extends StyleRecipe<CheckboxStyles> {
   const CheckboxStyles({
-    required this.outerContainer,
+    required this.flexContainer,
     required this.innerContainer,
     required this.icon,
     required this.label,
   });
 
-  final Style outerContainer;
+  final Style flexContainer;
   final Style innerContainer;
   final Style icon;
   final Style label;
 
-  factory CheckboxStyles.build(
-      [CheckboxStyles? other, List<Variant> variants = const []]) {
+  factory CheckboxStyles.baseForm() {
     return CheckboxStyles(
-      outerContainer: _outerContainerStyle(),
+      flexContainer: _flexContainerStyle(),
       innerContainer: _innerContainerStyle(),
       icon: _iconStyle(),
       label: _labelStyle(),
-    ).merge(other).applyVariants(variants);
+    );
   }
 
   @override
   CheckboxStyles applyVariants(List<Variant> variants) {
     return CheckboxStyles(
-      outerContainer: outerContainer.applyVariants(variants),
+      flexContainer: flexContainer.applyVariants(variants),
       innerContainer: innerContainer.applyVariants(variants),
       icon: icon.applyVariants(variants),
       label: label.applyVariants(variants),
@@ -37,7 +36,7 @@ class CheckboxStyles extends StyleRecipe<CheckboxStyles> {
 
   @override
   CheckboxStyles copyWith({
-    Style? outerContainer,
+    Style? flexContainer,
     Style? innerContainer,
     Style? icon,
     Style? label,
@@ -46,14 +45,14 @@ class CheckboxStyles extends StyleRecipe<CheckboxStyles> {
       innerContainer: this.innerContainer.merge(innerContainer),
       icon: this.icon.merge(icon),
       label: this.label.merge(label),
-      outerContainer: this.outerContainer.merge(outerContainer),
+      flexContainer: this.flexContainer.merge(flexContainer),
     );
   }
 
   @override
   CheckboxStyles merge(CheckboxStyles? other) {
     return copyWith(
-      outerContainer: other?.outerContainer,
+      flexContainer: other?.flexContainer,
       innerContainer: other?.innerContainer,
       icon: other?.icon,
       label: other?.label,
@@ -61,7 +60,7 @@ class CheckboxStyles extends StyleRecipe<CheckboxStyles> {
   }
 }
 
-Style _outerContainerStyle() => Style(
+Style _flexContainerStyle() => Style(
       flex.mainAxisAlignment.center(),
       flex.crossAxisAlignment.center(),
       flex.mainAxisSize.min(),

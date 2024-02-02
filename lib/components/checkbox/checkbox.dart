@@ -3,7 +3,10 @@ import 'package:mix/mix.dart';
 import 'package:remix_ui/components/checkbox/checkbox.style.dart';
 import 'package:remix_ui/components/checkbox/checkbox.variants.dart';
 
-class RemixCheckbox extends StatelessWidget {
+import '../../utils/component_recipe.dart';
+
+class RemixCheckbox extends StatelessWidget
+    implements RemixComponentRecipe<CheckboxStyles> {
   const RemixCheckbox({
     super.key,
     this.label,
@@ -12,8 +15,9 @@ class RemixCheckbox extends StatelessWidget {
     this.onChanged,
     this.iconChecked = Icons.check_rounded,
     this.iconUnchecked,
-    CheckboxStyles? style,
-  }) : _customStyle = style;
+    this.style,
+    this.variants = const [],
+  });
 
   final String? label;
   final bool isDisabled;
@@ -22,19 +26,30 @@ class RemixCheckbox extends StatelessWidget {
   final IconData? iconUnchecked;
   final ValueChanged<bool>? onChanged;
 
-  final CheckboxStyles? _customStyle;
+  @override
+  final CheckboxStyles? style;
+
+  @override
+  final List<Variant> variants;
+
+  CheckboxStyles buildStyle(List<Variant> variants) {
+    final result = style == null ? CheckboxStyles.baseForm() : style!;
+
+    return result.applyVariants(variants);
+  }
 
   @override
   Widget build(BuildContext context) {
-    var variant = isChecked ? CheckboxState.checked : CheckboxState.unchecked;
+    var internalVariants =
+        isChecked ? CheckboxState.checked : CheckboxState.unchecked;
 
-    final style = CheckboxStyles.build(_customStyle, [variant]);
+    final style = buildStyle([internalVariants, ...variants]);
 
     return Pressable(
       onPressed:
           onChanged == null || isDisabled ? null : () => onChanged!(!isChecked),
       child: HBox(
-        style: style.outerContainer,
+        style: style.flexContainer,
         children: [
           AnimatedBox(
             style: style.innerContainer,
