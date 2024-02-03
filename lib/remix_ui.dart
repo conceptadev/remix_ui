@@ -6,3 +6,5 @@ export 'components/button/button.variants.dart';
 export 'components/checkbox/checkbox.dart';
 export 'components/checkbox/checkbox.style.dart';
 export 'components/checkbox/checkbox.variants.dart';
+export 'components/avatar/avatar.dart';
+export 'components/avatar/avatar.style.dart';

@@ -17,6 +17,8 @@ dependencies:
   widgetbook: ^3.7.1
   remix_ui: 
     path: ../
+  mix: 
+    path: ../../mix
 
 dev_dependencies:
   flutter_test:
