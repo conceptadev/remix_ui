@@ -16,7 +16,6 @@ Widget buildCheckboxUseCase(BuildContext context) {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         RemixAvatar(
-          child: StyledIcon(Icons.person),
           style: AvatarStyles(
             container: Style(
               box.height(60),
@@ -30,6 +29,7 @@ Widget buildCheckboxUseCase(BuildContext context) {
               icon.color(Colors.cyanAccent),
             ),
           ),
+          child: const StyledIcon(Icons.person),
         ),
         const SizedBox(width: 10),
         RemixAvatar(

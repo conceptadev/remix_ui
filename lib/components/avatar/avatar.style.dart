@@ -69,7 +69,7 @@ Style _container() => Style.box(
       box.foregroundDecoration.shape.circle(),
     );
 
-Style _icon() => Style(
+Style _icon() => Style.icon(
       icon.size(18),
       icon.color.amber(),
     );

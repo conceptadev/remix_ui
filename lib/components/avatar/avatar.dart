@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
 
 import 'avatar.style.dart';
+import '../../utils/component_recipe.dart';
 
-class RemixAvatar extends StatelessWidget {
+class RemixAvatar extends StatelessWidget
+    implements RemixComponentRecipe<AvatarStyles> {
   const RemixAvatar({
     super.key,
     this.child,
@@ -14,10 +16,14 @@ class RemixAvatar extends StatelessWidget {
   });
 
   final Widget? child;
-  final AvatarStyles? style;
-  final List<Variant> variants;
   final ImageProvider<Object>? backgroundImage;
   final ImageProvider<Object>? foregroundImage;
+
+  @override
+  final AvatarStyles? style;
+
+  @override
+  final List<Variant> variants;
 
   Style buildStyle(List<Variant> variants) {
     var styles = style == null ? AvatarStyles.base() : style!;
