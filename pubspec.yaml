@@ -12,9 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   mix: 
-    git:
-      url: https://github.com/conceptadev/mix.git
-      ref: "main"
+    path: ../mix
 
   cupertino_icons: ^1.0.2
   flutter_hooks: ^0.18.4
