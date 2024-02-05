@@ -5,16 +5,16 @@ import 'switch.variants.dart';
 
 class SwitchStyles extends StyleRecipe<SwitchStyles> {
   const SwitchStyles({
-    this.outerContainer = const Style.empty(),
+    this.outerFlexContainer = const Style.empty(),
     this.innerContainer = const Style.empty(),
   });
 
-  final Style outerContainer;
+  final Style outerFlexContainer;
   final Style innerContainer;
 
   factory SwitchStyles.baseForm() {
     return SwitchStyles(
-      outerContainer: _outerContainerStyle(),
+      outerFlexContainer: _outerFlexContainerStyle(),
       innerContainer: _innerContainerStyle(),
     );
   }
@@ -22,32 +22,32 @@ class SwitchStyles extends StyleRecipe<SwitchStyles> {
   @override
   SwitchStyles applyVariants(List<Variant> variants) {
     return SwitchStyles(
-      outerContainer: outerContainer.applyVariants(variants),
+      outerFlexContainer: outerFlexContainer.applyVariants(variants),
       innerContainer: innerContainer.applyVariants(variants),
     );
   }
 
   @override
   SwitchStyles copyWith({
-    Style? outerContainer,
+    Style? outerFlexContainer,
     Style? innerContainer,
   }) {
     return SwitchStyles(
       innerContainer: this.innerContainer.merge(innerContainer),
-      outerContainer: this.outerContainer.merge(outerContainer),
+      outerFlexContainer: this.outerFlexContainer.merge(outerFlexContainer),
     );
   }
 
   @override
   SwitchStyles merge(SwitchStyles? other) {
     return copyWith(
-      outerContainer: other?.outerContainer,
+      outerFlexContainer: other?.outerFlexContainer,
       innerContainer: other?.innerContainer,
     );
   }
 }
 
-Style _outerContainerStyle() => Style(
+Style _outerFlexContainerStyle() => Style(
       box.width(32),
       box.height(16),
       border.all.width(2),

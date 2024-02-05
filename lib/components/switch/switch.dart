@@ -43,7 +43,7 @@ class RemixSwitch extends StatelessWidget
 
     return PressableBox(
       onPressed: _handleOnChange,
-      style: style.outerContainer,
+      style: style.outerFlexContainer,
       child: Box(
         style: style.innerContainer,
       ),
