@@ -17,8 +17,11 @@ dependencies:
   widgetbook: ^3.7.1
   remix_ui: 
     path: ../
+    
   mix: 
-    path: ../../mix
+    git:
+      url: https://github.com/conceptadev/mix.git
+      ref: "main"
 
 dev_dependencies:
   flutter_test:
