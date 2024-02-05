@@ -14,3 +14,5 @@ export 'components/switch/switch.style.dart';
 export 'components/switch/switch.variants.dart';
 export 'components/avatar/avatar.dart';
 export 'components/avatar/avatar.style.dart';
+export 'components/badge/badge.dart';
+export 'components/badge/badge.style.dart';
