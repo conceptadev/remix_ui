@@ -13,9 +13,9 @@ class ButtonStyles extends StyleRecipe<ButtonStyles> {
   final Style icon;
   final Style label;
 
-  factory ButtonStyles.defaults() {
+  factory ButtonStyles.baseForm() {
     return ButtonStyles(
-      container: _container,
+      container: _container(),
       icon: _icon(),
       label: _label(),
     );
@@ -26,7 +26,7 @@ class ButtonStyles extends StyleRecipe<ButtonStyles> {
     List<Variant> variants = const [],
   ]) {
     return ButtonStyles(
-      container: _container,
+      container: _container(),
       icon: _icon(),
       label: _label(),
     ).merge(other).applyVariants(variants);
@@ -64,62 +64,62 @@ class ButtonStyles extends StyleRecipe<ButtonStyles> {
   }
 }
 
-final _container = Style(
-  flex.gap(6),
-  flex.mainAxisAlignment.center(),
-  flex.crossAxisAlignment.center(),
-  flex.mainAxisSize.min(),
-  ButtonSize.xsmall(
-    box.padding.horizontal(8),
-    box.padding.vertical(4),
-  ),
-  ButtonSize.small(
-    box.padding.horizontal(12),
-    box.padding.vertical(6),
-  ),
-  ButtonSize.medium(
-    box.padding.horizontal(16),
-    box.padding.vertical(8),
-  ),
-  ButtonSize.large(
-    box.padding.horizontal(20),
-    box.padding.vertical(10),
-  ),
-  ButtonType.primary(
-    box.decoration.color.black(),
-    onHover(
-      box.decoration.color.black87(),
-    ),
-  ),
-  ButtonType.secondary(
-    box.decoration.color.grey.shade200(),
-    onHover(
-      box.decoration.color.grey.shade100(),
-    ),
-  ),
-  ButtonType.destructive(
-    box.decoration.color.redAccent(),
-    onHover(
-      box.decoration.color.redAccent.shade200(),
-    ),
-  ),
-  ButtonType.outline(
-    box.decoration.color.white(),
-    box.decoration.border(width: 1.5, color: Colors.black12),
-    box.decoration.boxShadow.color(Colors.black12.withOpacity(0.1)),
-    box.decoration.boxShadow.blurRadius(1),
-  ),
-  ButtonType.ghost(
-    box.decoration.color(Colors.transparent),
-    onHover(
-      box.decoration.color(Colors.black12),
-    ),
-  ),
-  ButtonType.link(
-    box.decoration.color(Colors.transparent),
-  ),
-  box.decoration.borderRadius(6),
-);
+Style _container() => Style(
+      flex.gap(6),
+      flex.mainAxisAlignment.center(),
+      flex.crossAxisAlignment.center(),
+      flex.mainAxisSize.min(),
+      ButtonSize.xsmall(
+        box.padding.horizontal(8),
+        box.padding.vertical(4),
+      ),
+      ButtonSize.small(
+        box.padding.horizontal(12),
+        box.padding.vertical(6),
+      ),
+      ButtonSize.medium(
+        box.padding.horizontal(16),
+        box.padding.vertical(8),
+      ),
+      ButtonSize.large(
+        box.padding.horizontal(20),
+        box.padding.vertical(10),
+      ),
+      ButtonType.primary(
+        box.decoration.color.black(),
+        onHover(
+          box.decoration.color.black87(),
+        ),
+      ),
+      ButtonType.secondary(
+        box.decoration.color.grey.shade200(),
+        onHover(
+          box.decoration.color.grey.shade100(),
+        ),
+      ),
+      ButtonType.destructive(
+        box.decoration.color.redAccent(),
+        onHover(
+          box.decoration.color.redAccent.shade200(),
+        ),
+      ),
+      ButtonType.outline(
+        box.decoration.color.white(),
+        box.decoration.border(width: 1.5, color: Colors.black12),
+        box.decoration.boxShadow.color(Colors.black12.withOpacity(0.1)),
+        box.decoration.boxShadow.blurRadius(1),
+      ),
+      ButtonType.ghost(
+        box.decoration.color(Colors.transparent),
+        onHover(
+          box.decoration.color(Colors.black12),
+        ),
+      ),
+      ButtonType.link(
+        box.decoration.color(Colors.transparent),
+      ),
+      box.decoration.borderRadius(6),
+    );
 
 Style _icon() => Style(
       ButtonSize.xsmall(

@@ -5,69 +5,69 @@ import 'switch.variants.dart';
 
 class SwitchStyles extends StyleRecipe<SwitchStyles> {
   const SwitchStyles({
-    this.outerContainer = const Style.empty(),
+    this.outerFlexContainer = const Style.empty(),
     this.innerContainer = const Style.empty(),
   });
 
-  final Style outerContainer;
+  final Style outerFlexContainer;
   final Style innerContainer;
 
-  factory SwitchStyles.build([
-    SwitchStyles? other,
-    List<Variant> variants = const [],
-  ]) {
+  factory SwitchStyles.baseForm() {
     return SwitchStyles(
-      outerContainer: _outerContainerStyle(),
+      outerFlexContainer: _outerFlexContainerStyle(),
       innerContainer: _innerContainerStyle(),
-    ).merge(other).applyVariants(variants);
+    );
   }
 
   @override
   SwitchStyles applyVariants(List<Variant> variants) {
     return SwitchStyles(
-      outerContainer: outerContainer.applyVariants(variants),
+      outerFlexContainer: outerFlexContainer.applyVariants(variants),
       innerContainer: innerContainer.applyVariants(variants),
     );
   }
 
   @override
   SwitchStyles copyWith({
-    Style? outerContainer,
+    Style? outerFlexContainer,
     Style? innerContainer,
   }) {
     return SwitchStyles(
       innerContainer: this.innerContainer.merge(innerContainer),
-      outerContainer: this.outerContainer.merge(outerContainer),
+      outerFlexContainer: this.outerFlexContainer.merge(outerFlexContainer),
     );
   }
 
   @override
   SwitchStyles merge(SwitchStyles? other) {
     return copyWith(
-      outerContainer: other?.outerContainer,
+      outerFlexContainer: other?.outerFlexContainer,
       innerContainer: other?.innerContainer,
     );
   }
 }
 
-Style _outerContainerStyle() => Style(
+Style _outerFlexContainerStyle() => Style(
       box.width(32),
-      box.height(20),
-      padding.all(2),
-      box.borderRadius.all(10),
+      box.height(16),
+      border.width(2),
+      border.strokeAlign(BorderSide.strokeAlignOutside),
+      box.borderRadius(20),
       SwitchState.active(
-        box.color.white(),
+        box.color.black(),
+        border.color.black(),
         box.alignment.centerRight(),
       ),
       SwitchState.inactive(
         box.alignment.centerLeft(),
-        box.color.grey.shade700(),
+        box.color.grey.shade300(),
+        border.color.grey.shade300(),
       ),
     );
 
 Style _innerContainerStyle() => Style(
-      box.borderRadius.all(10),
+      box.borderRadius(10),
       width(16),
       height(16),
-      box.color(Colors.black),
+      box.color.white(),
     );

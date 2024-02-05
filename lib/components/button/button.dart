@@ -3,7 +3,10 @@ import 'package:mix/mix.dart';
 import 'package:remix_ui/components/button/button.style.dart';
 import 'package:remix_ui/components/button/button.variants.dart';
 
-class RemixButton extends StatelessWidget {
+import '../../utils/component_recipe.dart';
+
+class RemixButton extends StatelessWidget
+    implements RemixComponentRecipe<ButtonStyles> {
   const RemixButton({
     super.key,
     this.label,
@@ -15,8 +18,9 @@ class RemixButton extends StatelessWidget {
     this.size = ButtonSize.xsmall,
     this.loadingLabel,
     required this.onPressed,
-    ButtonStyles? style,
-  }) : _customStyle = style;
+    this.style,
+    this.variants = const [],
+  });
 
   final String? label;
   final bool isDisabled;
@@ -27,7 +31,17 @@ class RemixButton extends StatelessWidget {
   final ButtonType type;
   final ButtonSize size;
   final VoidCallback? onPressed;
-  final ButtonStyles? _customStyle;
+
+  @override
+  final ButtonStyles? style;
+
+  @override
+  final List<Variant> variants;
+
+  ButtonStyles buildStyle(List<Variant> variants) {
+    final result = style == null ? ButtonStyles.baseForm() : style!;
+    return result.applyVariants(variants);
+  }
 
   List<Widget> _buildChildren(BuildContext context, ButtonStyles style) {
     if (isLoading) {
@@ -71,9 +85,8 @@ class RemixButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final style = ButtonStyles.defaults().merge(_customStyle).applyVariants(
-      [size, type],
-    );
+    final style = buildStyle([size, type, ...variants]);
+
     return PressableBox(
       onPressed: isDisabled || isLoading ? null : onPressed,
       child: HBox(

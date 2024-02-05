@@ -1,23 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
 
+import '../../utils/component_recipe.dart';
 import 'switch.style.dart';
 import 'switch.variants.dart';
 
-class RemixSwitch extends StatelessWidget {
+class RemixSwitch extends StatelessWidget
+    implements RemixComponentRecipe<SwitchStyles> {
   const RemixSwitch({
     super.key,
     this.disabled = false,
     this.active = false,
     this.onChanged,
-    SwitchStyles? style,
-  }) : _customStyle = style;
+    this.style,
+    this.variants = const [],
+  });
 
   final bool disabled;
   final bool active;
   final ValueChanged<bool>? onChanged;
 
-  final SwitchStyles? _customStyle;
+  @override
+  final SwitchStyles? style;
+
+  @override
+  final List<Variant> variants;
+
+  SwitchStyles buildStyle(List<Variant> variants) {
+    final result = style == null ? SwitchStyles.baseForm() : style!;
+    return result.applyVariants(variants);
+  }
 
   void Function()? _handleOnChange() {
     return onChanged == null || disabled ? null : () => onChanged!(!active);
@@ -25,13 +37,13 @@ class RemixSwitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var variant = active ? SwitchState.active : SwitchState.inactive;
+    var internalVariants = active ? SwitchState.active : SwitchState.inactive;
 
-    final style = SwitchStyles.build(_customStyle, [variant]);
+    final style = buildStyle([internalVariants, ...variants]);
 
     return PressableBox(
       onPressed: _handleOnChange,
-      style: style.outerContainer,
+      style: style.outerFlexContainer,
       child: Box(
         style: style.innerContainer,
       ),

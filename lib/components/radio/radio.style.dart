@@ -16,14 +16,13 @@ class RadioStyles extends StyleRecipe<RadioStyles> {
   final Style label;
   final Style row;
 
-  factory RadioStyles.build(
-      [RadioStyles? other, List<Variant> variants = const []]) {
+  factory RadioStyles.baseForm() {
     return RadioStyles(
       outerContainer: _outerContainerStyle(),
       innerContainer: _innerContainerStyle(),
       label: _labelStyle(),
       row: _hboxStyle(),
-    ).merge(other).applyVariants(variants);
+    );
   }
 
   @override

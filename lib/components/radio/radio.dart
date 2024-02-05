@@ -1,25 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
 
+import '../../utils/component_recipe.dart';
 import 'radio.style.dart';
 import 'radio.variants.dart';
 
-class RemixRadio extends StatelessWidget {
+class RemixRadio extends StatelessWidget
+    implements RemixComponentRecipe<RadioStyles> {
   const RemixRadio({
     super.key,
     this.label,
     this.disabled = false,
     this.active = false,
     this.onChanged,
-    RadioStyles? style,
-  }) : _customStyle = style;
+    this.style,
+    this.variants = const [],
+  });
 
   final String? label;
   final bool disabled;
   final bool active;
   final ValueChanged<bool>? onChanged;
 
-  final RadioStyles? _customStyle;
+  @override
+  final RadioStyles? style;
+
+  @override
+  final List<Variant> variants;
+
+  RadioStyles buildStyle(List<Variant> variants) {
+    final result = style == null ? RadioStyles.baseForm() : style!;
+    return result.applyVariants(variants);
+  }
 
   void Function()? _handleOnChange() {
     return onChanged == null || disabled ? null : () => onChanged!(!active);
@@ -27,9 +39,9 @@ class RemixRadio extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var variant = active ? RadioState.active : RadioState.inactive;
+    var internalVariants = active ? RadioState.active : RadioState.inactive;
 
-    final style = RadioStyles.build(_customStyle, [variant]);
+    final style = buildStyle([internalVariants, ...variants]);
 
     return PressableBox(
       onPressed: _handleOnChange,
