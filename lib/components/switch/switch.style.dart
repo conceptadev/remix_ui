@@ -50,23 +50,23 @@ class SwitchStyles extends StyleRecipe<SwitchStyles> {
 Style _outerFlexContainerStyle() => Style(
       box.width(32),
       box.height(16),
-      border.all.width(2),
-      border.all.strokeAlign(BorderSide.strokeAlignOutside),
-      box.borderRadius.all(20),
+      border.width(2),
+      border.strokeAlign(BorderSide.strokeAlignOutside),
+      box.borderRadius(20),
       SwitchState.active(
         box.color.black(),
-        border.all.color.black(),
+        border.color.black(),
         box.alignment.centerRight(),
       ),
       SwitchState.inactive(
         box.alignment.centerLeft(),
         box.color.grey.shade300(),
-        border.all.color.grey.shade300(),
+        border.color.grey.shade300(),
       ),
     );
 
 Style _innerContainerStyle() => Style(
-      box.borderRadius.all(10),
+      box.borderRadius(10),
       width(16),
       height(16),
       box.color.white(),
