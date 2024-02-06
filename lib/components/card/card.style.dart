@@ -16,12 +16,7 @@ class CardStyles extends StyleRecipe<CardStyles> {
 
   factory CardStyles.defaults() {
     return CardStyles(
-      container: Style(
-        box.padding(16),
-        box.elevation(1),
-        box.borderRadius(8),
-        box.color.white(),
-      ),
+      container: _container(),
     );
   }
 
@@ -49,3 +44,10 @@ class CardStyles extends StyleRecipe<CardStyles> {
     );
   }
 }
+
+Style _container() => Style(
+      box.padding(16),
+      box.elevation(1),
+      box.borderRadius(8),
+      box.color.white(),
+    );

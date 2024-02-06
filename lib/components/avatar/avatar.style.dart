@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
 
 class AvatarStyles extends StyleRecipe<AvatarStyles> {

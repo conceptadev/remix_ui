@@ -20,3 +20,5 @@ export 'components/list_tile/list_tile.dart';
 export 'components/list_tile/list_tile.style.dart';
 export 'components/divider/divider.dart';
 export 'components/divider/divider.style.dart';
+export 'components/card/card.dart';
+export 'components/card/card.style.dart';

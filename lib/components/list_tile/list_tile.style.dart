@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
 
 class ListTileStyles extends StyleRecipe<ListTileStyles> {
