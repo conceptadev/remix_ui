@@ -9,10 +9,11 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:demo/components/button.dart' as _i2;
-import 'package:demo/components/checkbox.dart' as _i3;
-import 'package:demo/components/radio.dart' as _i4;
-import 'package:demo/components/switch.dart' as _i5;
+import 'package:demo/components/avatar.dart' as _i2;
+import 'package:demo/components/button.dart' as _i3;
+import 'package:demo/components/checkbox.dart' as _i4;
+import 'package:demo/components/radio.dart' as _i5;
+import 'package:demo/components/switch.dart' as _i6;
 import 'package:widgetbook/widgetbook.dart' as _i1;
 
 final directories = <_i1.WidgetbookNode>[
@@ -20,13 +21,25 @@ final directories = <_i1.WidgetbookNode>[
     name: 'components',
     children: [
       _i1.WidgetbookFolder(
+        name: 'avatar',
+        children: [
+          _i1.WidgetbookLeafComponent(
+            name: 'RemixAvatar',
+            useCase: _i1.WidgetbookUseCase(
+              name: 'with title and icon',
+              builder: _i2.buildCheckboxUseCase,
+            ),
+          )
+        ],
+      ),
+      _i1.WidgetbookFolder(
         name: 'button',
         children: [
           _i1.WidgetbookLeafComponent(
             name: 'RemixButton',
             useCase: _i1.WidgetbookUseCase(
               name: 'interactive playground',
-              builder: _i2.buildButtonUseCase,
+              builder: _i3.buildButtonUseCase,
             ),
           )
         ],
@@ -38,7 +51,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'RemixCheckbox',
             useCase: _i1.WidgetbookUseCase(
               name: 'interactive playground',
-              builder: _i3.buildCheckboxUseCase,
+              builder: _i4.buildCheckboxUseCase,
             ),
           )
         ],
@@ -50,7 +63,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'RemixRadio',
             useCase: _i1.WidgetbookUseCase(
               name: 'interactive playground',
-              builder: _i4.buildRadioUseCase,
+              builder: _i5.buildRadioUseCase,
             ),
           )
         ],
@@ -62,7 +75,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'RemixSwitch',
             useCase: _i1.WidgetbookUseCase(
               name: 'interactive playground',
-              builder: _i5.buildRadioUseCase,
+              builder: _i6.buildRadioUseCase,
             ),
           )
         ],

@@ -12,3 +12,5 @@ export 'components/radio/radio.variants.dart';
 export 'components/switch/switch.dart';
 export 'components/switch/switch.style.dart';
 export 'components/switch/switch.variants.dart';
+export 'components/avatar/avatar.dart';
+export 'components/avatar/avatar.style.dart';
