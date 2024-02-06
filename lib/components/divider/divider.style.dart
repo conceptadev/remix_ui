@@ -39,7 +39,7 @@ class DividerStyles extends StyleRecipe<DividerStyles> {
 }
 
 Style _container() => Style(
-      box.padding.vertical(10),
+      box.margin.vertical(15),
       box.height(2),
       box.borderRadius(1),
       box.color.grey.shade200(),
