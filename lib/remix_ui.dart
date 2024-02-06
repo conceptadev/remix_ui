@@ -18,3 +18,5 @@ export 'components/badge/badge.dart';
 export 'components/badge/badge.style.dart';
 export 'components/list_tile/list_tile.dart';
 export 'components/list_tile/list_tile.style.dart';
+export 'components/divider/divider.dart';
+export 'components/divider/divider.style.dart';
