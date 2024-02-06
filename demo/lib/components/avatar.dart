@@ -46,7 +46,7 @@ Widget buildCheckboxUseCase(BuildContext context) {
         ),
         const SizedBox(width: 10),
         RemixAvatar(
-          backgroundImage: NetworkImage(
+          backgroundImage: const NetworkImage(
             'https://avatars.githubusercontent.com/u/14010287?v=4',
           ),
           style: AvatarStyles.base().copyWith(

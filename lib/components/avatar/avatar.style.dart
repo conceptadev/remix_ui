@@ -59,19 +59,19 @@ class AvatarStyles extends StyleRecipe<AvatarStyles> {
   }
 }
 
-Style _container() => Style.box(
-      box.color(Colors.amber.withAlpha(50)),
+Style _container() => Style(
+      box.color.grey.shade100(),
       box.borderRadius(50),
       box.alignment.center(),
       box.width(40),
       box.height(40),
       box.clipBehavior.antiAlias(),
-      box.foregroundDecoration.shape.circle(),
+      clip.oval(),
     );
 
 Style _icon() => Style.icon(
       icon.size(18),
-      icon.color.amber(),
+      icon.color.grey(),
     );
 
 Style _label() => Style.text(
