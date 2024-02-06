@@ -13,8 +13,9 @@ import 'package:demo/components/avatar.dart' as _i2;
 import 'package:demo/components/badge.dart' as _i3;
 import 'package:demo/components/button.dart' as _i4;
 import 'package:demo/components/checkbox.dart' as _i5;
-import 'package:demo/components/radio.dart' as _i6;
-import 'package:demo/components/switch.dart' as _i7;
+import 'package:demo/components/list_tile.dart' as _i6;
+import 'package:demo/components/radio.dart' as _i7;
+import 'package:demo/components/switch.dart' as _i8;
 import 'package:widgetbook/widgetbook.dart' as _i1;
 
 final directories = <_i1.WidgetbookNode>[
@@ -70,13 +71,25 @@ final directories = <_i1.WidgetbookNode>[
         ],
       ),
       _i1.WidgetbookFolder(
+        name: 'list_tile',
+        children: [
+          _i1.WidgetbookLeafComponent(
+            name: 'RemixListTile',
+            useCase: _i1.WidgetbookUseCase(
+              name: 'interactive playground',
+              builder: _i6.buildCheckboxUseCase,
+            ),
+          )
+        ],
+      ),
+      _i1.WidgetbookFolder(
         name: 'radio',
         children: [
           _i1.WidgetbookLeafComponent(
             name: 'RemixRadio',
             useCase: _i1.WidgetbookUseCase(
               name: 'interactive playground',
-              builder: _i6.buildRadioUseCase,
+              builder: _i7.buildRadioUseCase,
             ),
           )
         ],
@@ -88,7 +101,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'RemixSwitch',
             useCase: _i1.WidgetbookUseCase(
               name: 'interactive playground',
-              builder: _i7.buildRadioUseCase,
+              builder: _i8.buildRadioUseCase,
             ),
           )
         ],

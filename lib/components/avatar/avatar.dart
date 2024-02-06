@@ -29,17 +29,16 @@ class RemixAvatar extends StatelessWidget
     var styles = style == null ? AvatarStyles.base() : style!;
     styles = styles.applyVariants(variants);
 
-    return styles.container
-        .merge(styles.icon)
-        .merge(styles.label)
-        .merge(styles.image)
-        .merge(
-          Style.create([
-            if (backgroundImage != null) box.decoration.image(backgroundImage!),
-            if (foregroundImage != null)
-              box.foregroundDecoration.image(foregroundImage!),
-          ]),
-        );
+    return Style.combine([
+      styles.container,
+      styles.icon,
+      styles.label,
+      styles.image,
+      if (backgroundImage != null)
+        Style(box.decoration.image(backgroundImage!)),
+      if (foregroundImage != null)
+        Style(box.foregroundDecoration.image(foregroundImage!)),
+    ]);
   }
 
   @override

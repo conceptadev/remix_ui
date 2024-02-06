@@ -16,3 +16,5 @@ export 'components/avatar/avatar.dart';
 export 'components/avatar/avatar.style.dart';
 export 'components/badge/badge.dart';
 export 'components/badge/badge.style.dart';
+export 'components/list_tile/list_tile.dart';
+export 'components/list_tile/list_tile.style.dart';
