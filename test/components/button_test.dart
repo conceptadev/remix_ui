@@ -28,7 +28,7 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: RemixButton(
-            isLoading: true,
+            loading: true,
             loadingLabel: loadingLabel,
             onPressed: () {},
           ),
@@ -70,7 +70,7 @@ void main() {
         onPressed: () {
           didCallOnPressed = true;
         },
-        isDisabled: true,
+        disabled: true,
       ),
     ));
 

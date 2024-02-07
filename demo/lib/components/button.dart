@@ -15,7 +15,7 @@ Widget buildButtonUseCase(BuildContext context) {
         initialValue: 'Title',
       ),
       onPressed: () {},
-      isLoading: context.knobs.boolean(
+      loading: context.knobs.boolean(
         label: 'Is loading',
         initialValue: false,
       ),
@@ -23,7 +23,7 @@ Widget buildButtonUseCase(BuildContext context) {
         label: 'Loading label',
         initialValue: 'Loading',
       ),
-      isDisabled: context.knobs.boolean(
+      disabled: context.knobs.boolean(
         label: 'Disabled',
         initialValue: false,
       ),

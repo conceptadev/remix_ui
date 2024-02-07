@@ -6,9 +6,19 @@ class PresableRemixCard extends RemixCard {
   const PresableRemixCard({
     super.key,
     required super.child,
-    void Function()? onTap,
+    this.onTap,
     super.style,
   });
+
+  final void Function()? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Pressable(
+      onPressed: onTap,
+      child: super.build(context),
+    );
+  }
 }
 
 class RemixCard extends StatelessWidget {
