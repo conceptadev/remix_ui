@@ -1,5 +1,7 @@
 library remix_ui;
 
+export 'components/alert/alert.dart';
+export 'components/alert/alert.style.dart';
 export 'components/button/button.dart';
 export 'components/button/button.style.dart';
 export 'components/button/button.variants.dart';
