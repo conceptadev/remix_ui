@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
 import 'package:remix_ui/components/card/card.style.dart';
 
+import '../../utils/component_recipe.dart';
+
 class PresableRemixCard extends RemixCard {
   const PresableRemixCard({
     super.key,
@@ -11,16 +13,14 @@ class PresableRemixCard extends RemixCard {
   });
 }
 
-class RemixCard extends StatelessWidget {
+class RemixCard extends StatelessWidget
+    implements RemixComponentRecipe<CardStyles> {
   const RemixCard({
     super.key,
     required this.child,
-    CardStyles? style,
-  }) : _customStyle = style;
-
-  final Widget child;
-
-  final CardStyles? _customStyle;
+    this.style,
+    this.variants = const [],
+  });
 
   factory RemixCard.pressable(
     Widget child, {
@@ -34,9 +34,23 @@ class RemixCard extends StatelessWidget {
     );
   }
 
+  final Widget child;
+
+  @override
+  final CardStyles? style;
+
+  @override
+  final List<Variant> variants;
+
+  CardStyles buildStyle(List<Variant> variants) {
+    final result = style == null ? CardStyles.base() : style!;
+
+    return result.applyVariants(variants);
+  }
+
   @override
   Widget build(BuildContext context) {
-    final style = CardStyles.build(_customStyle);
+    final style = buildStyle(variants);
 
     return Box(
       style: style.container,
