@@ -18,8 +18,7 @@ dependencies:
   remix_ui: 
     path: ../
     
-  mix: 
-    path: ../../mix
+  mix: 1.0.0-beta.6
 
 dev_dependencies:
   flutter_test:
