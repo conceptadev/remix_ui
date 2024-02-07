@@ -7,14 +7,7 @@ class CardStyles extends StyleRecipe<CardStyles> {
 
   final Style container;
 
-  factory CardStyles.build([
-    CardStyles? other,
-    List<Variant> variants = const [],
-  ]) {
-    return CardStyles.defaults().merge(other).applyVariants(variants);
-  }
-
-  factory CardStyles.defaults() {
+  factory CardStyles.base() {
     return CardStyles(
       container: Style(
         box.padding(16),
