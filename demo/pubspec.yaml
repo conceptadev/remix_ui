@@ -15,6 +15,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   widgetbook_annotation: ^3.1.0
   widgetbook: ^3.7.1
+  flutter_portal: ^1.1.4
   remix_ui: 
     path: ../
     

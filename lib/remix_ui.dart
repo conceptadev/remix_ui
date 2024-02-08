@@ -22,3 +22,5 @@ export 'components/divider/divider.dart';
 export 'components/divider/divider.style.dart';
 export 'components/card/card.dart';
 export 'components/card/card.style.dart';
+export 'components/popup_menu/popup_menu.dart';
+export 'components/popup_menu/popup_menu.style.dart';
