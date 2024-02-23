@@ -15,11 +15,11 @@ Widget buildCheckboxUseCase(BuildContext context) {
         initialValue: 'Title',
       ),
       onChanged: (value) {},
-      isChecked: context.knobs.boolean(
+      checked: context.knobs.boolean(
         label: 'Checked',
         initialValue: false,
       ),
-      isDisabled: context.knobs.boolean(
+      disabled: context.knobs.boolean(
         label: 'Disabled',
         initialValue: false,
       ),

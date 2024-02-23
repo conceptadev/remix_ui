@@ -22,9 +22,7 @@ Widget buildCheckboxUseCase(BuildContext context) {
             ),
           ),
         ),
-        child: StyledText(
-          'LF',
-        ),
+        child: StyledText('LF'),
       ),
       title: StyledText(
         context.knobs.string(
