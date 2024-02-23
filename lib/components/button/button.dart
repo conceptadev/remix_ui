@@ -10,8 +10,8 @@ class RemixButton extends StatelessWidget
   const RemixButton({
     super.key,
     this.label,
-    this.isDisabled = false,
-    this.isLoading = false,
+    this.disabled = false,
+    this.loading = false,
     this.iconLeft,
     this.iconRight,
     this.type = ButtonType.primary,
@@ -23,8 +23,8 @@ class RemixButton extends StatelessWidget
   });
 
   final String? label;
-  final bool isDisabled;
-  final bool isLoading;
+  final bool disabled;
+  final bool loading;
   final String? loadingLabel;
   final IconData? iconLeft;
   final IconData? iconRight;
@@ -42,6 +42,7 @@ class RemixButton extends StatelessWidget
     final result = style == null ? RemixButtonStyles.baseForm() : style!;
     return result.applyVariants(variants);
   }
+
 
   List<Widget> _buildChildren(BuildContext context, RemixButtonStyles style) {
     if (isLoading) {
@@ -88,7 +89,7 @@ class RemixButton extends StatelessWidget
     final style = buildStyle([size, type, ...variants]);
 
     return PressableBox(
-      onPressed: isDisabled || isLoading ? null : onPressed,
+      onPressed: disabled || loading ? null : onPressed,
       child: HBox(
         style: style.container,
         children: _buildChildren(context, style),

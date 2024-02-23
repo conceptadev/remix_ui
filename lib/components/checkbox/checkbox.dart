@@ -10,8 +10,8 @@ class RemixCheckbox extends StatelessWidget
   const RemixCheckbox({
     super.key,
     this.label,
-    this.isDisabled = false,
-    this.isChecked = false,
+    this.disabled = false,
+    this.checked = false,
     this.onChanged,
     this.iconChecked = Icons.check_rounded,
     this.iconUnchecked,
@@ -20,8 +20,8 @@ class RemixCheckbox extends StatelessWidget
   });
 
   final String? label;
-  final bool isDisabled;
-  final bool isChecked;
+  final bool disabled;
+  final bool checked;
   final IconData iconChecked;
   final IconData? iconUnchecked;
   final ValueChanged<bool>? onChanged;
@@ -41,13 +41,13 @@ class RemixCheckbox extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     var internalVariants =
-        isChecked ? CheckboxState.checked : CheckboxState.unchecked;
+        checked ? CheckboxState.checked : CheckboxState.unchecked;
 
     final style = buildStyle([internalVariants, ...variants]);
 
     return Pressable(
       onPressed:
-          onChanged == null || isDisabled ? null : () => onChanged!(!isChecked),
+          onChanged == null || disabled ? null : () => onChanged!(!checked),
       child: HBox(
         style: style.flexContainer,
         children: [
@@ -55,7 +55,7 @@ class RemixCheckbox extends StatelessWidget
             style: style.innerContainer,
             duration: const Duration(milliseconds: 150),
             child: StyledIcon(
-              isChecked ? iconChecked : iconUnchecked,
+              checked ? iconChecked : iconUnchecked,
               style: style.icon,
             ),
           ),

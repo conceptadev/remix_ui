@@ -86,39 +86,40 @@ Style _container() => Style(
         box.padding.vertical(10),
       ),
       ButtonType.primary(
-        box.decoration.color.black(),
+        box.color.black(),
         onHover(
-          box.decoration.color.black87(),
+          box.color.black87(),
         ),
       ),
       ButtonType.secondary(
-        box.decoration.color.grey.shade200(),
+        box.color.grey.shade200(),
         onHover(
-          box.decoration.color.grey.shade100(),
+          box.color.grey.shade100(),
         ),
       ),
       ButtonType.destructive(
-        box.decoration.color.redAccent(),
+        box.color.redAccent(),
         onHover(
-          box.decoration.color.redAccent.shade200(),
+          box.color.redAccent.shade200(),
         ),
       ),
       ButtonType.outline(
-        box.decoration.color.white(),
-        box.decoration.border(width: 1.5, color: Colors.black12),
-        box.decoration.boxShadow.color(Colors.black12.withOpacity(0.1)),
-        box.decoration.boxShadow.blurRadius(1),
+        box.color.white(),
+        box.border.width(1.5),
+        box.border.color.black12(),
+        box.shadow.color(Colors.black12.withOpacity(0.1)),
+        box.shadow.blurRadius(1),
       ),
       ButtonType.ghost(
-        box.decoration.color(Colors.transparent),
+        box.color.transparent(),
         onHover(
-          box.decoration.color(Colors.black12),
+          box.color.black12(),
         ),
       ),
       ButtonType.link(
-        box.decoration.color(Colors.transparent),
+        box.color.transparent(),
       ),
-      box.decoration.borderRadius(6),
+      box.borderRadius(6),
     );
 
 Style _icon() => Style(
