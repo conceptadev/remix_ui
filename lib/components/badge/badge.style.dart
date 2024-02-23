@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
 
-class RemixBadgeStyles extends StyleRecipe<RemixBadgeStyles> {
-  const RemixBadgeStyles({
+class RemixBadgeStyle extends StyleRecipe<RemixBadgeStyle> {
+  const RemixBadgeStyle({
     this.container = const Style.empty(),
     this.label = const Style.empty(),
   });
@@ -10,34 +10,34 @@ class RemixBadgeStyles extends StyleRecipe<RemixBadgeStyles> {
   final Style container;
   final Style label;
 
-  factory RemixBadgeStyles.base() {
-    return RemixBadgeStyles(
+  factory RemixBadgeStyle.base() {
+    return RemixBadgeStyle(
       container: _container(),
       label: _label(),
     );
   }
 
   @override
-  RemixBadgeStyles applyVariants(List<Variant> variants) {
-    return RemixBadgeStyles(
+  RemixBadgeStyle applyVariants(List<Variant> variants) {
+    return RemixBadgeStyle(
       container: container.applyVariants(variants),
       label: label.applyVariants(variants),
     );
   }
 
   @override
-  RemixBadgeStyles copyWith({
+  RemixBadgeStyle copyWith({
     Style? container,
     Style? label,
   }) {
-    return RemixBadgeStyles(
+    return RemixBadgeStyle(
       container: this.container.merge(container),
       label: this.label.merge(label),
     );
   }
 
   @override
-  RemixBadgeStyles merge(RemixBadgeStyles? other) {
+  RemixBadgeStyle merge(RemixBadgeStyle? other) {
     return copyWith(
       container: other?.container,
       label: other?.label,

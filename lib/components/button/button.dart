@@ -6,7 +6,7 @@ import 'package:remix_ui/components/button/button.variants.dart';
 import '../../utils/component_recipe.dart';
 
 class RemixButton extends StatelessWidget
-    implements RemixComponentRecipe<RemixButtonStyles> {
+    implements RemixComponentRecipe<RemixButtonStyle> {
   const RemixButton({
     super.key,
     this.label,
@@ -33,27 +33,25 @@ class RemixButton extends StatelessWidget
   final VoidCallback? onPressed;
 
   @override
-  final RemixButtonStyles? style;
+  final RemixButtonStyle? style;
 
   @override
   final List<Variant> variants;
 
-  RemixButtonStyles buildStyle(List<Variant> variants) {
-    final result = style == null ? RemixButtonStyles.baseForm() : style!;
+  RemixButtonStyle buildStyle(List<Variant> variants) {
+    final result = style == null ? RemixButtonStyle.baseForm() : style!;
     return result.applyVariants(variants);
   }
 
-
-  List<Widget> _buildChildren(BuildContext context, RemixButtonStyles style) {
-    if (isLoading) {
-      return _buildLoadingChildren(context, style);
-    }
-    return _buildDefaultChildren(style);
+  List<Widget> _buildChildren(BuildContext context, RemixButtonStyle style) {
+    return loading
+        ? _buildLoadingChildren(context, style)
+        : _buildDefaultChildren(style);
   }
 
   List<Widget> _buildLoadingChildren(
     BuildContext context,
-    RemixButtonStyles buttonStyle,
+    RemixButtonStyle buttonStyle,
   ) =>
       [
         _buildLoadingIndicator(MixData.create(context, buttonStyle.icon)),
@@ -78,7 +76,7 @@ class RemixButton extends StatelessWidget
     );
   }
 
-  List<Widget> _buildDefaultChildren(RemixButtonStyles style) => [
+  List<Widget> _buildDefaultChildren(RemixButtonStyle style) => [
         if (iconLeft != null) StyledIcon(iconLeft, style: style.icon),
         if (label != null) StyledText(label!, style: style.label),
         if (iconRight != null) StyledIcon(iconRight, style: style.icon),

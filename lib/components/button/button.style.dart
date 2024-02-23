@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
 import 'package:remix_ui/components/button/button.variants.dart';
 
-class RemixButtonStyles extends StyleRecipe<RemixButtonStyles> {
-  const RemixButtonStyles({
+class RemixButtonStyle extends StyleRecipe<RemixButtonStyle> {
+  const RemixButtonStyle({
     this.container = const Style.empty(),
     this.icon = const Style.empty(),
     this.label = const Style.empty(),
@@ -13,19 +13,19 @@ class RemixButtonStyles extends StyleRecipe<RemixButtonStyles> {
   final Style icon;
   final Style label;
 
-  factory RemixButtonStyles.baseForm() {
-    return RemixButtonStyles(
+  factory RemixButtonStyle.baseForm() {
+    return RemixButtonStyle(
       container: _container(),
       icon: _icon(),
       label: _label(),
     );
   }
 
-  factory RemixButtonStyles.build([
-    RemixButtonStyles? other,
+  factory RemixButtonStyle.build([
+    RemixButtonStyle? other,
     List<Variant> variants = const [],
   ]) {
-    return RemixButtonStyles(
+    return RemixButtonStyle(
       container: _container(),
       icon: _icon(),
       label: _label(),
@@ -33,8 +33,8 @@ class RemixButtonStyles extends StyleRecipe<RemixButtonStyles> {
   }
 
   @override
-  RemixButtonStyles applyVariants(List<Variant> variants) {
-    return RemixButtonStyles(
+  RemixButtonStyle applyVariants(List<Variant> variants) {
+    return RemixButtonStyle(
       container: container.applyVariants(variants),
       icon: icon.applyVariants(variants),
       label: label.applyVariants(variants),
@@ -42,12 +42,12 @@ class RemixButtonStyles extends StyleRecipe<RemixButtonStyles> {
   }
 
   @override
-  RemixButtonStyles copyWith({
+  RemixButtonStyle copyWith({
     Style? container,
     Style? icon,
     Style? label,
   }) {
-    return RemixButtonStyles(
+    return RemixButtonStyle(
       container: this.container.merge(container),
       icon: this.icon.merge(icon),
       label: this.label.merge(label),
@@ -55,7 +55,7 @@ class RemixButtonStyles extends StyleRecipe<RemixButtonStyles> {
   }
 
   @override
-  RemixButtonStyles merge(RemixButtonStyles? other) {
+  RemixButtonStyle merge(RemixButtonStyle? other) {
     return copyWith(
       container: other?.container,
       icon: other?.icon,

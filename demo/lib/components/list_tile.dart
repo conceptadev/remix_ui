@@ -12,7 +12,7 @@ Widget buildCheckboxUseCase(BuildContext context) {
   return Center(
     child: RemixListTile(
       leading: RemixAvatar(
-        style: RemixAvatarStyles.base().copyWith(
+        style: RemixAvatarStyle.base().copyWith(
           container: Style(
             height(60),
             width(60),

@@ -15,7 +15,7 @@ Widget buildCheckboxUseCase(BuildContext context) {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         RemixAvatar(
-          style: RemixAvatarStyles(
+          style: RemixAvatarStyle(
             container: Style(
               box.height(60),
               box.width(60),
@@ -31,7 +31,7 @@ Widget buildCheckboxUseCase(BuildContext context) {
         ),
         const SizedBox(width: 10),
         RemixAvatar(
-          style: RemixAvatarStyles.base().copyWith(
+          style: RemixAvatarStyle.base().copyWith(
             container: Style(
               box.height(50),
               box.width(50),
@@ -45,7 +45,7 @@ Widget buildCheckboxUseCase(BuildContext context) {
           image: NetworkImage(
             'https://avatars.githubusercontent.com/u/14010287?v=4',
           ),
-          style: RemixAvatarStyles.base().copyWith(
+          style: RemixAvatarStyle.base().copyWith(
             container: Style(
               box.height(40),
               box.width(40),

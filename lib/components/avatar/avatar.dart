@@ -6,7 +6,7 @@ import 'avatar.style.dart';
 import '../../utils/component_recipe.dart';
 
 class RemixAvatar extends StatelessWidget
-    implements RemixComponentRecipe<RemixAvatarStyles> {
+    implements RemixComponentRecipe<RemixAvatarStyle> {
   const RemixAvatar({
     super.key,
     this.image,
@@ -19,17 +19,17 @@ class RemixAvatar extends StatelessWidget
 
   final ImageProvider<Object>? image;
   final String? fallbackLabel;
-  final RemixWidgetBuilder<RemixAvatarStyles>? fallbackLabelBuilder;
-  final RemixWidgetBuilder<RemixAvatarStyles>? imageBuilder;
+  final RemixWidgetBuilder<RemixAvatarStyle>? fallbackLabelBuilder;
+  final RemixWidgetBuilder<RemixAvatarStyle>? imageBuilder;
 
   @override
-  final RemixAvatarStyles? style;
+  final RemixAvatarStyle? style;
 
   @override
   final List<Variant> variants;
 
-  RemixAvatarStyles buildStyle(List<Variant> variants) {
-    var styles = style == null ? RemixAvatarStyles.base() : style!;
+  RemixAvatarStyle buildStyle(List<Variant> variants) {
+    var styles = style == null ? RemixAvatarStyle.base() : style!;
 
     return styles.applyVariants(variants);
   }

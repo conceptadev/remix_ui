@@ -5,7 +5,7 @@ import 'badge.style.dart';
 import '../../utils/component_recipe.dart';
 
 class RemixBadge extends StatelessWidget
-    implements RemixComponentRecipe<RemixBadgeStyles> {
+    implements RemixComponentRecipe<RemixBadgeStyle> {
   const RemixBadge({
     super.key,
     required this.label,
@@ -16,13 +16,13 @@ class RemixBadge extends StatelessWidget
   final String label;
 
   @override
-  final RemixBadgeStyles? style;
+  final RemixBadgeStyle? style;
 
   @override
   final List<Variant> variants;
 
-  RemixBadgeStyles buildStyle(List<Variant> variants) {
-    var styles = style == null ? RemixBadgeStyles.base() : style!;
+  RemixBadgeStyle buildStyle(List<Variant> variants) {
+    var styles = style == null ? RemixBadgeStyle.base() : style!;
     return styles.applyVariants(variants);
   }
 

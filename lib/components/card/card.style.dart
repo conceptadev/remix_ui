@@ -1,27 +1,27 @@
 import 'package:mix/mix.dart';
 
-class RemixCardStyles extends StyleRecipe<RemixCardStyles> {
-  const RemixCardStyles({
+class RemixCardStyle extends StyleRecipe<RemixCardStyle> {
+  const RemixCardStyle({
     this.container = const Style.empty(),
   });
 
   final Style container;
 
-  factory RemixCardStyles.base() {
-    return RemixCardStyles(
+  factory RemixCardStyle.base() {
+    return RemixCardStyle(
       container: _container(),
     );
   }
 
   @override
-  RemixCardStyles applyVariants(List<Variant> variants) {
-    return RemixCardStyles(
+  RemixCardStyle applyVariants(List<Variant> variants) {
+    return RemixCardStyle(
       container: container.applyVariants(variants),
     );
   }
 
   @override
-  RemixCardStyles merge(RemixCardStyles? other) {
+  RemixCardStyle merge(RemixCardStyle? other) {
     if (other == null) return this;
     return copyWith(
       container: container.merge(other.container),
@@ -29,10 +29,10 @@ class RemixCardStyles extends StyleRecipe<RemixCardStyles> {
   }
 
   @override
-  RemixCardStyles copyWith({
+  RemixCardStyle copyWith({
     Style? container,
   }) {
-    return RemixCardStyles(
+    return RemixCardStyle(
       container: container ?? this.container,
     );
   }

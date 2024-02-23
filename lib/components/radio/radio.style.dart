@@ -3,8 +3,8 @@ import 'package:mix/mix.dart';
 
 import 'radio.variants.dart';
 
-class RemixRadioStyles extends StyleRecipe<RemixRadioStyles> {
-  const RemixRadioStyles({
+class RemixRadioStyle extends StyleRecipe<RemixRadioStyle> {
+  const RemixRadioStyle({
     this.outerContainer = const Style.empty(),
     this.innerContainer = const Style.empty(),
     this.label = const Style.empty(),
@@ -16,8 +16,8 @@ class RemixRadioStyles extends StyleRecipe<RemixRadioStyles> {
   final Style label;
   final Style row;
 
-  factory RemixRadioStyles.baseForm() {
-    return RemixRadioStyles(
+  factory RemixRadioStyle.baseForm() {
+    return RemixRadioStyle(
       outerContainer: _outerContainerStyle(),
       innerContainer: _innerContainerStyle(),
       label: _labelStyle(),
@@ -26,8 +26,8 @@ class RemixRadioStyles extends StyleRecipe<RemixRadioStyles> {
   }
 
   @override
-  RemixRadioStyles applyVariants(List<Variant> variants) {
-    return RemixRadioStyles(
+  RemixRadioStyle applyVariants(List<Variant> variants) {
+    return RemixRadioStyle(
       outerContainer: outerContainer.applyVariants(variants),
       innerContainer: innerContainer.applyVariants(variants),
       label: label.applyVariants(variants),
@@ -36,13 +36,13 @@ class RemixRadioStyles extends StyleRecipe<RemixRadioStyles> {
   }
 
   @override
-  RemixRadioStyles copyWith({
+  RemixRadioStyle copyWith({
     Style? outerContainer,
     Style? innerContainer,
     Style? label,
     Style? row,
   }) {
-    return RemixRadioStyles(
+    return RemixRadioStyle(
       innerContainer: this.innerContainer.merge(innerContainer),
       outerContainer: this.outerContainer.merge(outerContainer),
       label: this.label.merge(label),
@@ -51,7 +51,7 @@ class RemixRadioStyles extends StyleRecipe<RemixRadioStyles> {
   }
 
   @override
-  RemixRadioStyles merge(RemixRadioStyles? other) {
+  RemixRadioStyle merge(RemixRadioStyle? other) {
     return copyWith(
       outerContainer: other?.outerContainer,
       innerContainer: other?.innerContainer,

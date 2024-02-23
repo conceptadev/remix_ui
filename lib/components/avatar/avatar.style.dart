@@ -1,7 +1,7 @@
 import 'package:mix/mix.dart';
 
-class RemixAvatarStyles extends StyleRecipe<RemixAvatarStyles> {
-  const RemixAvatarStyles({
+class RemixAvatarStyle extends StyleRecipe<RemixAvatarStyle> {
+  const RemixAvatarStyle({
     this.container = const Style.empty(),
     this.fallbackLabel = const Style.empty(),
     this.image = const Style.empty(),
@@ -11,8 +11,8 @@ class RemixAvatarStyles extends StyleRecipe<RemixAvatarStyles> {
   final Style fallbackLabel;
   final Style image;
 
-  factory RemixAvatarStyles.base() {
-    return RemixAvatarStyles(
+  factory RemixAvatarStyle.base() {
+    return RemixAvatarStyle(
       container: _container(),
       fallbackLabel: _label(),
       image: _image(),
@@ -20,8 +20,8 @@ class RemixAvatarStyles extends StyleRecipe<RemixAvatarStyles> {
   }
 
   @override
-  RemixAvatarStyles applyVariants(List<Variant> variants) {
-    return RemixAvatarStyles(
+  RemixAvatarStyle applyVariants(List<Variant> variants) {
+    return RemixAvatarStyle(
       container: container.applyVariants(variants),
       fallbackLabel: fallbackLabel.applyVariants(variants),
       image: image.applyVariants(variants),
@@ -29,12 +29,12 @@ class RemixAvatarStyles extends StyleRecipe<RemixAvatarStyles> {
   }
 
   @override
-  RemixAvatarStyles copyWith({
+  RemixAvatarStyle copyWith({
     Style? container,
     Style? fallbackLabel,
     Style? image,
   }) {
-    return RemixAvatarStyles(
+    return RemixAvatarStyle(
       container: this.container.merge(container),
       fallbackLabel: this.fallbackLabel.merge(fallbackLabel),
       image: this.image.merge(image),
@@ -42,7 +42,7 @@ class RemixAvatarStyles extends StyleRecipe<RemixAvatarStyles> {
   }
 
   @override
-  RemixAvatarStyles merge(RemixAvatarStyles? other) {
+  RemixAvatarStyle merge(RemixAvatarStyle? other) {
     return copyWith(
       container: other?.container,
       fallbackLabel: other?.fallbackLabel,

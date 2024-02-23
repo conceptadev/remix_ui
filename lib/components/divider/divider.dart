@@ -5,7 +5,7 @@ import 'divider.style.dart';
 import '../../utils/component_recipe.dart';
 
 class RemixDivider extends StatelessWidget
-    implements RemixComponentRecipe<RemixDividerStyles> {
+    implements RemixComponentRecipe<RemixDividerStyle> {
   const RemixDivider({
     super.key,
     this.style,
@@ -13,13 +13,13 @@ class RemixDivider extends StatelessWidget
   });
 
   @override
-  final RemixDividerStyles? style;
+  final RemixDividerStyle? style;
 
   @override
   final List<Variant> variants;
 
-  RemixDividerStyles buildStyle(List<Variant> variants) {
-    var styles = style == null ? RemixDividerStyles.base() : style!;
+  RemixDividerStyle buildStyle(List<Variant> variants) {
+    var styles = style == null ? RemixDividerStyle.base() : style!;
     return styles.applyVariants(variants);
   }
 

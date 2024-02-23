@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
 import 'package:remix_ui/components/checkbox/checkbox.variants.dart';
 
-class RemixCheckboxStyles extends StyleRecipe<RemixCheckboxStyles> {
-  const RemixCheckboxStyles({
+class RemixCheckboxStyle extends StyleRecipe<RemixCheckboxStyle> {
+  const RemixCheckboxStyle({
     required this.flexContainer,
     required this.innerContainer,
     required this.icon,
@@ -15,8 +15,8 @@ class RemixCheckboxStyles extends StyleRecipe<RemixCheckboxStyles> {
   final Style icon;
   final Style label;
 
-  factory RemixCheckboxStyles.baseForm() {
-    return RemixCheckboxStyles(
+  factory RemixCheckboxStyle.baseForm() {
+    return RemixCheckboxStyle(
       flexContainer: _flexContainerStyle(),
       innerContainer: _innerContainerStyle(),
       icon: _iconStyle(),
@@ -25,8 +25,8 @@ class RemixCheckboxStyles extends StyleRecipe<RemixCheckboxStyles> {
   }
 
   @override
-  RemixCheckboxStyles applyVariants(List<Variant> variants) {
-    return RemixCheckboxStyles(
+  RemixCheckboxStyle applyVariants(List<Variant> variants) {
+    return RemixCheckboxStyle(
       flexContainer: flexContainer.applyVariants(variants),
       innerContainer: innerContainer.applyVariants(variants),
       icon: icon.applyVariants(variants),
@@ -35,13 +35,13 @@ class RemixCheckboxStyles extends StyleRecipe<RemixCheckboxStyles> {
   }
 
   @override
-  RemixCheckboxStyles copyWith({
+  RemixCheckboxStyle copyWith({
     Style? flexContainer,
     Style? innerContainer,
     Style? icon,
     Style? label,
   }) {
-    return RemixCheckboxStyles(
+    return RemixCheckboxStyle(
       innerContainer: this.innerContainer.merge(innerContainer),
       icon: this.icon.merge(icon),
       label: this.label.merge(label),
@@ -50,7 +50,7 @@ class RemixCheckboxStyles extends StyleRecipe<RemixCheckboxStyles> {
   }
 
   @override
-  RemixCheckboxStyles merge(RemixCheckboxStyles? other) {
+  RemixCheckboxStyle merge(RemixCheckboxStyle? other) {
     return copyWith(
       flexContainer: other?.flexContainer,
       innerContainer: other?.innerContainer,
