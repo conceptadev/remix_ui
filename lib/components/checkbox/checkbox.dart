@@ -6,7 +6,7 @@ import 'package:remix_ui/components/checkbox/checkbox.variants.dart';
 import '../../utils/component_recipe.dart';
 
 class RemixCheckbox extends StatelessWidget
-    implements RemixComponentRecipe<CheckboxStyles> {
+    implements RemixComponentRecipe<RemixCheckboxStyles> {
   const RemixCheckbox({
     super.key,
     this.label,
@@ -27,13 +27,13 @@ class RemixCheckbox extends StatelessWidget
   final ValueChanged<bool>? onChanged;
 
   @override
-  final CheckboxStyles? style;
+  final RemixCheckboxStyles? style;
 
   @override
   final List<Variant> variants;
 
-  CheckboxStyles buildStyle(List<Variant> variants) {
-    final result = style == null ? CheckboxStyles.baseForm() : style!;
+  RemixCheckboxStyles buildStyle(List<Variant> variants) {
+    final result = style == null ? RemixCheckboxStyles.baseForm() : style!;
 
     return result.applyVariants(variants);
   }

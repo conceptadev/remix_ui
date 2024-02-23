@@ -1,58 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
 
-class BadgeStyles extends StyleRecipe<BadgeStyles> {
-  const BadgeStyles({
-    this.outerRowContainer = const Style.empty(),
-    this.icon = const Style.empty(),
+class RemixBadgeStyles extends StyleRecipe<RemixBadgeStyles> {
+  const RemixBadgeStyles({
+    this.container = const Style.empty(),
     this.label = const Style.empty(),
   });
 
-  final Style outerRowContainer;
-  final Style icon;
+  final Style container;
   final Style label;
 
-  factory BadgeStyles.base() {
-    return BadgeStyles(
-      outerRowContainer: _outerRowContainer(),
-      icon: _icon(),
+  factory RemixBadgeStyles.base() {
+    return RemixBadgeStyles(
+      container: _container(),
       label: _label(),
     );
   }
 
   @override
-  BadgeStyles applyVariants(List<Variant> variants) {
-    return BadgeStyles(
-      outerRowContainer: outerRowContainer.applyVariants(variants),
-      icon: icon.applyVariants(variants),
+  RemixBadgeStyles applyVariants(List<Variant> variants) {
+    return RemixBadgeStyles(
+      container: container.applyVariants(variants),
       label: label.applyVariants(variants),
     );
   }
 
   @override
-  BadgeStyles copyWith({
-    Style? outerRowContainer,
-    Style? icon,
+  RemixBadgeStyles copyWith({
+    Style? container,
     Style? label,
   }) {
-    return BadgeStyles(
-      outerRowContainer: this.outerRowContainer.merge(outerRowContainer),
-      icon: this.icon.merge(icon),
+    return RemixBadgeStyles(
+      container: this.container.merge(container),
       label: this.label.merge(label),
     );
   }
 
   @override
-  BadgeStyles merge(BadgeStyles? other) {
+  RemixBadgeStyles merge(RemixBadgeStyles? other) {
     return copyWith(
-      outerRowContainer: other?.outerRowContainer,
-      icon: other?.icon,
+      container: other?.container,
       label: other?.label,
     );
   }
 }
 
-Style _outerRowContainer() => Style(
+Style _container() => Style(
       flex.mainAxisAlignment.center(),
       flex.mainAxisSize.min(),
       flex.crossAxisAlignment.center(),
@@ -64,11 +57,6 @@ Style _outerRowContainer() => Style(
       onHover(
         box.color(Colors.black.withOpacity(0.8)),
       ),
-    );
-
-Style _icon() => Style.icon(
-      icon.size(12),
-      icon.color.white(),
     );
 
 Style _label() => Style.text(

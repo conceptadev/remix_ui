@@ -1,58 +1,51 @@
 import 'package:mix/mix.dart';
 
-class AvatarStyles extends StyleRecipe<AvatarStyles> {
-  const AvatarStyles({
+class RemixAvatarStyles extends StyleRecipe<RemixAvatarStyles> {
+  const RemixAvatarStyles({
     this.container = const Style.empty(),
-    this.icon = const Style.empty(),
-    this.label = const Style.empty(),
+    this.fallbackLabel = const Style.empty(),
     this.image = const Style.empty(),
   });
 
   final Style container;
-  final Style icon;
-  final Style label;
+  final Style fallbackLabel;
   final Style image;
 
-  factory AvatarStyles.base() {
-    return AvatarStyles(
+  factory RemixAvatarStyles.base() {
+    return RemixAvatarStyles(
       container: _container(),
-      icon: _icon(),
-      label: _label(),
+      fallbackLabel: _label(),
       image: _image(),
     );
   }
 
   @override
-  AvatarStyles applyVariants(List<Variant> variants) {
-    return AvatarStyles(
+  RemixAvatarStyles applyVariants(List<Variant> variants) {
+    return RemixAvatarStyles(
       container: container.applyVariants(variants),
-      icon: icon.applyVariants(variants),
-      label: label.applyVariants(variants),
+      fallbackLabel: fallbackLabel.applyVariants(variants),
       image: image.applyVariants(variants),
     );
   }
 
   @override
-  AvatarStyles copyWith({
+  RemixAvatarStyles copyWith({
     Style? container,
-    Style? icon,
-    Style? label,
+    Style? fallbackLabel,
     Style? image,
   }) {
-    return AvatarStyles(
+    return RemixAvatarStyles(
       container: this.container.merge(container),
-      icon: this.icon.merge(icon),
-      label: this.label.merge(label),
+      fallbackLabel: this.fallbackLabel.merge(fallbackLabel),
       image: this.image.merge(image),
     );
   }
 
   @override
-  AvatarStyles merge(AvatarStyles? other) {
+  RemixAvatarStyles merge(RemixAvatarStyles? other) {
     return copyWith(
       container: other?.container,
-      icon: other?.icon,
-      label: other?.label,
+      fallbackLabel: other?.fallbackLabel,
       image: other?.image,
     );
   }
@@ -66,11 +59,6 @@ Style _container() => Style(
       box.height(40),
       box.clipBehavior.antiAlias(),
       clip.oval(),
-    );
-
-Style _icon() => Style.icon(
-      icon.size(18),
-      icon.color.grey(),
     );
 
 Style _label() => Style.text(

@@ -6,7 +6,7 @@ import 'radio.style.dart';
 import 'radio.variants.dart';
 
 class RemixRadio extends StatelessWidget
-    implements RemixComponentRecipe<RadioStyles> {
+    implements RemixComponentRecipe<RemixRadioStyles> {
   const RemixRadio({
     super.key,
     this.label,
@@ -23,13 +23,13 @@ class RemixRadio extends StatelessWidget
   final ValueChanged<bool>? onChanged;
 
   @override
-  final RadioStyles? style;
+  final RemixRadioStyles? style;
 
   @override
   final List<Variant> variants;
 
-  RadioStyles buildStyle(List<Variant> variants) {
-    final result = style == null ? RadioStyles.baseForm() : style!;
+  RemixRadioStyles buildStyle(List<Variant> variants) {
+    final result = style == null ? RemixRadioStyles.baseForm() : style!;
     return result.applyVariants(variants);
   }
 

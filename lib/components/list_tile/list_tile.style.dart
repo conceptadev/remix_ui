@@ -1,7 +1,7 @@
 import 'package:mix/mix.dart';
 
-class ListTileStyles extends StyleRecipe<ListTileStyles> {
-  const ListTileStyles({
+class RemixListTileStyle extends StyleRecipe<RemixListTileStyle> {
+  const RemixListTileStyle({
     this.outerRowContainer = const Style.empty(),
     this.innerColumnContainer = const Style.empty(),
     this.title = const Style.empty(),
@@ -13,8 +13,8 @@ class ListTileStyles extends StyleRecipe<ListTileStyles> {
   final Style title;
   final Style subtitle;
 
-  factory ListTileStyles.base() {
-    return ListTileStyles(
+  factory RemixListTileStyle.base() {
+    return RemixListTileStyle(
       outerRowContainer: _outerRowContainer(),
       innerColumnContainer: _innerColumnContainer(),
       title: _title(),
@@ -23,8 +23,8 @@ class ListTileStyles extends StyleRecipe<ListTileStyles> {
   }
 
   @override
-  ListTileStyles applyVariants(List<Variant> variants) {
-    return ListTileStyles(
+  RemixListTileStyle applyVariants(List<Variant> variants) {
+    return RemixListTileStyle(
       outerRowContainer: outerRowContainer.applyVariants(variants),
       innerColumnContainer: innerColumnContainer.applyVariants(variants),
       title: title.applyVariants(variants),
@@ -33,13 +33,13 @@ class ListTileStyles extends StyleRecipe<ListTileStyles> {
   }
 
   @override
-  ListTileStyles copyWith({
+  RemixListTileStyle copyWith({
     Style? outerRowContainer,
     Style? innerColumnContainer,
     Style? title,
     Style? subtitle,
   }) {
-    return ListTileStyles(
+    return RemixListTileStyle(
       outerRowContainer: this.outerRowContainer.merge(outerRowContainer),
       innerColumnContainer:
           this.innerColumnContainer.merge(innerColumnContainer),
@@ -49,7 +49,7 @@ class ListTileStyles extends StyleRecipe<ListTileStyles> {
   }
 
   @override
-  ListTileStyles merge(ListTileStyles? other) {
+  RemixListTileStyle merge(RemixListTileStyle? other) {
     return copyWith(
       outerRowContainer: other?.outerRowContainer,
       innerColumnContainer: other?.innerColumnContainer,

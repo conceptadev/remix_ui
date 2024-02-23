@@ -1,7 +1,7 @@
 import 'package:mix/mix.dart';
 
-class AlertStyles extends StyleRecipe<AlertStyles> {
-  const AlertStyles({
+class RemixAlertStyle extends StyleRecipe<RemixAlertStyle> {
+  const RemixAlertStyle({
     this.outerRowContainer = const Style.empty(),
     this.innerColumnContainer = const Style.empty(),
     this.title = const Style.empty(),
@@ -15,8 +15,8 @@ class AlertStyles extends StyleRecipe<AlertStyles> {
   final Style subtitle;
   final Style icon;
 
-  factory AlertStyles.base() {
-    return AlertStyles(
+  factory RemixAlertStyle.base() {
+    return RemixAlertStyle(
       outerRowContainer: _outerRowContainer(),
       innerColumnContainer: _innerColumnContainer(),
       title: _title(),
@@ -26,8 +26,8 @@ class AlertStyles extends StyleRecipe<AlertStyles> {
   }
 
   @override
-  AlertStyles applyVariants(List<Variant> variants) {
-    return AlertStyles(
+  RemixAlertStyle applyVariants(List<Variant> variants) {
+    return RemixAlertStyle(
       outerRowContainer: outerRowContainer.applyVariants(variants),
       innerColumnContainer: innerColumnContainer.applyVariants(variants),
       title: title.applyVariants(variants),
@@ -37,7 +37,7 @@ class AlertStyles extends StyleRecipe<AlertStyles> {
   }
 
   @override
-  AlertStyles merge(AlertStyles? other) {
+  RemixAlertStyle merge(RemixAlertStyle? other) {
     if (other == null) return this;
     return copyWith(
       outerRowContainer: outerRowContainer.merge(other.outerRowContainer),
@@ -50,14 +50,14 @@ class AlertStyles extends StyleRecipe<AlertStyles> {
   }
 
   @override
-  AlertStyles copyWith({
+  RemixAlertStyle copyWith({
     Style? outerRowContainer,
     Style? innerColumnContainer,
     Style? title,
     Style? subtitle,
     Style? icon,
   }) {
-    return AlertStyles(
+    return RemixAlertStyle(
       outerRowContainer: outerRowContainer ?? this.outerRowContainer,
       innerColumnContainer: innerColumnContainer ?? this.innerColumnContainer,
       title: title ?? this.title,

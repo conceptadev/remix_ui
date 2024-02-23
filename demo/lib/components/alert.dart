@@ -13,23 +13,19 @@ Widget buildCheckboxUseCase(BuildContext context) {
     child: SizedBox(
       width: 300,
       child: RemixAlert(
-        title: StyledText(
-          context.knobs.string(
-            label: 'Title',
-            initialValue: 'Error',
-          ),
+        title: context.knobs.string(
+          label: 'Title',
+          initialValue: 'Error',
         ),
-        subtitle: StyledText(
-          context.knobs.string(
-            label: 'Subtitle',
-            initialValue: 'Your session has expired. Please log in again.',
-          ),
+        subtitle: context.knobs.string(
+          label: 'Subtitle',
+          initialValue: 'Your session has expired. Please log in again.',
         ),
-        leading: context.knobs.boolean(
-          label: 'Leading',
+        icon: context.knobs.boolean(
+          label: 'icon',
           initialValue: false,
         )
-            ? const StyledIcon(Icons.warning_amber_rounded)
+            ? Icons.warning_amber_rounded
             : null,
       ),
     ),

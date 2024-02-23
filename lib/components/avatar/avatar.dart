@@ -1,51 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
 
+import '../../helpers/widget_builder.dart';
 import 'avatar.style.dart';
 import '../../utils/component_recipe.dart';
 
 class RemixAvatar extends StatelessWidget
-    implements RemixComponentRecipe<AvatarStyles> {
+    implements RemixComponentRecipe<RemixAvatarStyles> {
   const RemixAvatar({
     super.key,
-    this.child,
-    this.backgroundImage,
-    this.foregroundImage,
+    this.image,
+    this.imageBuilder,
+    this.fallbackLabel,
+    this.fallbackLabelBuilder,
     this.style,
     this.variants = const [],
   });
 
-  final Widget? child;
-  final ImageProvider<Object>? backgroundImage;
-  final ImageProvider<Object>? foregroundImage;
+  final ImageProvider<Object>? image;
+  final String? fallbackLabel;
+  final RemixWidgetBuilder<RemixAvatarStyles>? fallbackLabelBuilder;
+  final RemixWidgetBuilder<RemixAvatarStyles>? imageBuilder;
 
   @override
-  final AvatarStyles? style;
+  final RemixAvatarStyles? style;
 
   @override
   final List<Variant> variants;
 
-  Style buildStyle(List<Variant> variants) {
-    var styles = style == null ? AvatarStyles.base() : style!;
-    styles = styles.applyVariants(variants);
+  RemixAvatarStyles buildStyle(List<Variant> variants) {
+    var styles = style == null ? RemixAvatarStyles.base() : style!;
 
-    return Style.combine([
-      styles.container,
-      styles.icon,
-      styles.label,
-      styles.image,
-      if (backgroundImage != null)
-        Style(box.decoration.image(backgroundImage!)),
-      if (foregroundImage != null)
-        Style(box.foregroundDecoration.image(foregroundImage!)),
-    ]);
+    return styles.applyVariants(variants);
   }
 
   @override
   Widget build(BuildContext context) {
+    final style = buildStyle(variants);
+
+    final imageWidget = imageBuilder != null
+        ? imageBuilder!(style)
+        : image != null
+            ? StyledImage(
+                image: image!,
+                style: style.image,
+                inherit: false,
+              )
+            : null;
+
+    final fallbackLabelWidget = fallbackLabelBuilder != null
+        ? fallbackLabelBuilder!(style)
+        : fallbackLabel != null
+            ? StyledText(fallbackLabel!, style: style.fallbackLabel)
+            : null;
+
     return Box(
-      style: buildStyle(variants),
-      child: child,
+      style: style.container,
+      child: imageWidget ?? fallbackLabelWidget,
     );
   }
 }

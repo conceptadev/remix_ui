@@ -6,7 +6,7 @@ import 'switch.style.dart';
 import 'switch.variants.dart';
 
 class RemixSwitch extends StatelessWidget
-    implements RemixComponentRecipe<SwitchStyles> {
+    implements RemixComponentRecipe<RemixSwitchStyles> {
   const RemixSwitch({
     super.key,
     this.disabled = false,
@@ -21,13 +21,13 @@ class RemixSwitch extends StatelessWidget
   final ValueChanged<bool>? onChanged;
 
   @override
-  final SwitchStyles? style;
+  final RemixSwitchStyles? style;
 
   @override
   final List<Variant> variants;
 
-  SwitchStyles buildStyle(List<Variant> variants) {
-    final result = style == null ? SwitchStyles.baseForm() : style!;
+  RemixSwitchStyles buildStyle(List<Variant> variants) {
+    final result = style == null ? RemixSwitchStyles.baseForm() : style!;
     return result.applyVariants(variants);
   }
 

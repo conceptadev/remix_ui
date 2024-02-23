@@ -14,10 +14,10 @@ Widget buildCheckboxUseCase(BuildContext context) {
       child: RemixCard(
         child: RemixListTile(
           leading: RemixAvatar(
-            child: StyledText('LF'),
+            fallbackLabel: 'LF',
           ),
-          title: StyledText('Title'),
-          subtitle: StyledText('Subtitle'),
+          title: 'Title',
+          subtitle: 'Subtitle',
         ),
       ),
     ),

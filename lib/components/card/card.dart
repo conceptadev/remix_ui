@@ -14,7 +14,7 @@ class PresableRemixCard extends RemixCard {
 }
 
 class RemixCard extends StatelessWidget
-    implements RemixComponentRecipe<CardStyles> {
+    implements RemixComponentRecipe<RemixCardStyles> {
   const RemixCard({
     super.key,
     required this.child,
@@ -25,7 +25,7 @@ class RemixCard extends StatelessWidget
   factory RemixCard.pressable(
     Widget child, {
     void Function()? onTap,
-    CardStyles? style,
+    RemixCardStyles? style,
   }) {
     return PresableRemixCard(
       style: style,
@@ -37,13 +37,13 @@ class RemixCard extends StatelessWidget
   final Widget child;
 
   @override
-  final CardStyles? style;
+  final RemixCardStyles? style;
 
   @override
   final List<Variant> variants;
 
-  CardStyles buildStyle(List<Variant> variants) {
-    final result = style == null ? CardStyles.base() : style!;
+  RemixCardStyles buildStyle(List<Variant> variants) {
+    final result = style == null ? RemixCardStyles.base() : style!;
 
     return result.applyVariants(variants);
   }

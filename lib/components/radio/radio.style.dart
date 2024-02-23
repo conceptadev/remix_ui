@@ -3,8 +3,8 @@ import 'package:mix/mix.dart';
 
 import 'radio.variants.dart';
 
-class RadioStyles extends StyleRecipe<RadioStyles> {
-  const RadioStyles({
+class RemixRadioStyles extends StyleRecipe<RemixRadioStyles> {
+  const RemixRadioStyles({
     this.outerContainer = const Style.empty(),
     this.innerContainer = const Style.empty(),
     this.label = const Style.empty(),
@@ -16,8 +16,8 @@ class RadioStyles extends StyleRecipe<RadioStyles> {
   final Style label;
   final Style row;
 
-  factory RadioStyles.baseForm() {
-    return RadioStyles(
+  factory RemixRadioStyles.baseForm() {
+    return RemixRadioStyles(
       outerContainer: _outerContainerStyle(),
       innerContainer: _innerContainerStyle(),
       label: _labelStyle(),
@@ -26,8 +26,8 @@ class RadioStyles extends StyleRecipe<RadioStyles> {
   }
 
   @override
-  RadioStyles applyVariants(List<Variant> variants) {
-    return RadioStyles(
+  RemixRadioStyles applyVariants(List<Variant> variants) {
+    return RemixRadioStyles(
       outerContainer: outerContainer.applyVariants(variants),
       innerContainer: innerContainer.applyVariants(variants),
       label: label.applyVariants(variants),
@@ -36,13 +36,13 @@ class RadioStyles extends StyleRecipe<RadioStyles> {
   }
 
   @override
-  RadioStyles copyWith({
+  RemixRadioStyles copyWith({
     Style? outerContainer,
     Style? innerContainer,
     Style? label,
     Style? row,
   }) {
-    return RadioStyles(
+    return RemixRadioStyles(
       innerContainer: this.innerContainer.merge(innerContainer),
       outerContainer: this.outerContainer.merge(outerContainer),
       label: this.label.merge(label),
@@ -51,7 +51,7 @@ class RadioStyles extends StyleRecipe<RadioStyles> {
   }
 
   @override
-  RadioStyles merge(RadioStyles? other) {
+  RemixRadioStyles merge(RemixRadioStyles? other) {
     return copyWith(
       outerContainer: other?.outerContainer,
       innerContainer: other?.innerContainer,
