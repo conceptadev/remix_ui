@@ -23,8 +23,11 @@ Widget buildCheckboxUseCase(BuildContext context) {
               box.color(
                 Colors.cyanAccent.shade200.withAlpha(60),
               ),
+              icon.size(30),
+              icon.color(Colors.cyanAccent),
             ),
           ),
+          imageBuilder: (style) => const StyledIcon(Icons.person),
         ),
         const SizedBox(width: 10),
         RemixAvatar(
@@ -37,6 +40,8 @@ Widget buildCheckboxUseCase(BuildContext context) {
             //   icon.size(30),
             // ),
           ),
+          imageBuilder: (style) =>
+              const StyledIcon(Icons.access_alarms_rounded),
         ),
         const SizedBox(width: 10),
         RemixAvatar(
