@@ -36,9 +36,6 @@ Widget buildCheckboxUseCase(BuildContext context) {
               box.height(50),
               box.width(50),
             ),
-            // icon: Style(
-            //   icon.size(30),
-            // ),
           ),
           imageBuilder: (style) =>
               const StyledIcon(Icons.access_alarms_rounded),
@@ -54,7 +51,6 @@ Widget buildCheckboxUseCase(BuildContext context) {
               box.width(40),
             ),
           ),
-          // child: const StyledIcon(Icons.access_alarms_rounded),
         ),
       ],
     ),
