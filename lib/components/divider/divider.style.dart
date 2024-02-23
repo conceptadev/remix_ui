@@ -1,36 +1,36 @@
 import 'package:mix/mix.dart';
 
-class DividerStyles extends StyleRecipe<DividerStyles> {
-  const DividerStyles({
+class RemixDividerStyle extends StyleRecipe<RemixDividerStyle> {
+  const RemixDividerStyle({
     this.container = const Style.empty(),
   });
 
   final Style container;
 
-  factory DividerStyles.base() {
-    return DividerStyles(
+  factory RemixDividerStyle.base() {
+    return RemixDividerStyle(
       container: _container(),
     );
   }
 
   @override
-  DividerStyles applyVariants(List<Variant> variants) {
-    return DividerStyles(
+  RemixDividerStyle applyVariants(List<Variant> variants) {
+    return RemixDividerStyle(
       container: container.applyVariants(variants),
     );
   }
 
   @override
-  DividerStyles copyWith({
+  RemixDividerStyle copyWith({
     Style? container,
   }) {
-    return DividerStyles(
+    return RemixDividerStyle(
       container: this.container.merge(container),
     );
   }
 
   @override
-  DividerStyles merge(DividerStyles? other) {
+  RemixDividerStyle merge(RemixDividerStyle? other) {
     return copyWith(
       container: other?.container,
     );

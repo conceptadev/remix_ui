@@ -12,7 +12,7 @@ Widget buildCheckboxUseCase(BuildContext context) {
   return Center(
     child: RemixListTile(
       leading: RemixAvatar(
-        style: AvatarStyles.base().copyWith(
+        style: RemixAvatarStyle.base().copyWith(
           container: Style(
             height(60),
             width(60),
@@ -22,19 +22,15 @@ Widget buildCheckboxUseCase(BuildContext context) {
             ),
           ),
         ),
-        child: StyledText('LF'),
+        fallbackLabel: 'LF',
       ),
-      title: StyledText(
-        context.knobs.string(
-          label: 'Title',
-          initialValue: 'Title',
-        ),
+      title: context.knobs.string(
+        label: 'Title',
+        initialValue: 'Title',
       ),
-      subtitle: StyledText(
-        context.knobs.string(
-          label: 'Subtitle',
-          initialValue: 'Subtitle',
-        ),
+      subtitle: context.knobs.string(
+        label: 'Subtitle',
+        initialValue: 'Subtitle',
       ),
       trailing: Icon(
         Icons.arrow_forward_ios,

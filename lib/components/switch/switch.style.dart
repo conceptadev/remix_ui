@@ -3,8 +3,8 @@ import 'package:mix/mix.dart';
 
 import 'switch.variants.dart';
 
-class SwitchStyles extends StyleRecipe<SwitchStyles> {
-  const SwitchStyles({
+class RemixSwitchStyle extends StyleRecipe<RemixSwitchStyle> {
+  const RemixSwitchStyle({
     this.outerFlexContainer = const Style.empty(),
     this.innerContainer = const Style.empty(),
   });
@@ -12,34 +12,34 @@ class SwitchStyles extends StyleRecipe<SwitchStyles> {
   final Style outerFlexContainer;
   final Style innerContainer;
 
-  factory SwitchStyles.baseForm() {
-    return SwitchStyles(
+  factory RemixSwitchStyle.baseForm() {
+    return RemixSwitchStyle(
       outerFlexContainer: _outerFlexContainerStyle(),
       innerContainer: _innerContainerStyle(),
     );
   }
 
   @override
-  SwitchStyles applyVariants(List<Variant> variants) {
-    return SwitchStyles(
+  RemixSwitchStyle applyVariants(List<Variant> variants) {
+    return RemixSwitchStyle(
       outerFlexContainer: outerFlexContainer.applyVariants(variants),
       innerContainer: innerContainer.applyVariants(variants),
     );
   }
 
   @override
-  SwitchStyles copyWith({
+  RemixSwitchStyle copyWith({
     Style? outerFlexContainer,
     Style? innerContainer,
   }) {
-    return SwitchStyles(
+    return RemixSwitchStyle(
       innerContainer: this.innerContainer.merge(innerContainer),
       outerFlexContainer: this.outerFlexContainer.merge(outerFlexContainer),
     );
   }
 
   @override
-  SwitchStyles merge(SwitchStyles? other) {
+  RemixSwitchStyle merge(RemixSwitchStyle? other) {
     return copyWith(
       outerFlexContainer: other?.outerFlexContainer,
       innerContainer: other?.innerContainer,

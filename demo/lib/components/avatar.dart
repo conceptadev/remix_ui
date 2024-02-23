@@ -15,7 +15,7 @@ Widget buildCheckboxUseCase(BuildContext context) {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         RemixAvatar(
-          style: AvatarStyles(
+          style: RemixAvatarStyle(
             container: Style(
               box.height(60),
               box.width(60),
@@ -23,41 +23,34 @@ Widget buildCheckboxUseCase(BuildContext context) {
               box.color(
                 Colors.cyanAccent.shade200.withAlpha(60),
               ),
-            ),
-            icon: Style(
+              icon.size(30),
               icon.color(Colors.cyanAccent),
             ),
           ),
-          child: const StyledIcon(Icons.person),
+          imageBuilder: (style) => const StyledIcon(Icons.person),
         ),
         const SizedBox(width: 10),
         RemixAvatar(
-          style: AvatarStyles.base().copyWith(
+          style: RemixAvatarStyle.base().copyWith(
             container: Style(
               box.height(50),
               box.width(50),
             ),
-            icon: Style(
-              icon.size(30),
-            ),
           ),
-          child: const StyledIcon(Icons.access_alarms_rounded),
+          imageBuilder: (style) =>
+              const StyledIcon(Icons.access_alarms_rounded),
         ),
         const SizedBox(width: 10),
         RemixAvatar(
-          backgroundImage: const NetworkImage(
+          image: NetworkImage(
             'https://avatars.githubusercontent.com/u/14010287?v=4',
           ),
-          style: AvatarStyles.base().copyWith(
+          style: RemixAvatarStyle.base().copyWith(
             container: Style(
               box.height(40),
               box.width(40),
             ),
-            icon: Style(
-              icon.size(30),
-            ),
           ),
-          // child: const StyledIcon(Icons.access_alarms_rounded),
         ),
       ],
     ),

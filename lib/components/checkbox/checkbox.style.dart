@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
 import 'package:remix_ui/components/checkbox/checkbox.variants.dart';
 
-class CheckboxStyles extends StyleRecipe<CheckboxStyles> {
-  const CheckboxStyles({
+class RemixCheckboxStyle extends StyleRecipe<RemixCheckboxStyle> {
+  const RemixCheckboxStyle({
     required this.flexContainer,
     required this.innerContainer,
     required this.icon,
@@ -15,8 +15,8 @@ class CheckboxStyles extends StyleRecipe<CheckboxStyles> {
   final Style icon;
   final Style label;
 
-  factory CheckboxStyles.baseForm() {
-    return CheckboxStyles(
+  factory RemixCheckboxStyle.baseForm() {
+    return RemixCheckboxStyle(
       flexContainer: _flexContainerStyle(),
       innerContainer: _innerContainerStyle(),
       icon: _iconStyle(),
@@ -25,8 +25,8 @@ class CheckboxStyles extends StyleRecipe<CheckboxStyles> {
   }
 
   @override
-  CheckboxStyles applyVariants(List<Variant> variants) {
-    return CheckboxStyles(
+  RemixCheckboxStyle applyVariants(List<Variant> variants) {
+    return RemixCheckboxStyle(
       flexContainer: flexContainer.applyVariants(variants),
       innerContainer: innerContainer.applyVariants(variants),
       icon: icon.applyVariants(variants),
@@ -35,13 +35,13 @@ class CheckboxStyles extends StyleRecipe<CheckboxStyles> {
   }
 
   @override
-  CheckboxStyles copyWith({
+  RemixCheckboxStyle copyWith({
     Style? flexContainer,
     Style? innerContainer,
     Style? icon,
     Style? label,
   }) {
-    return CheckboxStyles(
+    return RemixCheckboxStyle(
       innerContainer: this.innerContainer.merge(innerContainer),
       icon: this.icon.merge(icon),
       label: this.label.merge(label),
@@ -50,7 +50,7 @@ class CheckboxStyles extends StyleRecipe<CheckboxStyles> {
   }
 
   @override
-  CheckboxStyles merge(CheckboxStyles? other) {
+  RemixCheckboxStyle merge(RemixCheckboxStyle? other) {
     return copyWith(
       flexContainer: other?.flexContainer,
       innerContainer: other?.innerContainer,

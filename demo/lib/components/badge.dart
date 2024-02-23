@@ -11,22 +11,10 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 Widget buildCheckboxUseCase(BuildContext context) {
   return Center(
     child: RemixBadge(
-      label: context.knobs.stringOrNull(
+      label: context.knobs.string(
         label: "Label",
         initialValue: "Label",
       ),
-      leadingIcon: context.knobs.boolean(
-        label: "Leading icon",
-        initialValue: false,
-      )
-          ? const StyledIcon(Icons.star_rounded)
-          : null,
-      trailingIcon: context.knobs.boolean(
-        label: "Trailing icon",
-        initialValue: false,
-      )
-          ? const StyledIcon(Icons.alarm)
-          : null,
     ),
   );
 }
