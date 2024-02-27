@@ -27,7 +27,7 @@ class RemixSwitch extends StatelessWidget
   final List<Variant> variants;
 
   RemixSwitchStyle buildStyle(List<Variant> variants) {
-    final result = style == null ? RemixSwitchStyle.baseForm() : style!;
+    final result = style == null ? RemixSwitchStyle.base() : style!;
     return result.applyVariants(variants);
   }
 

@@ -33,7 +33,7 @@ class RemixCheckbox extends StatelessWidget
   final List<Variant> variants;
 
   RemixCheckboxStyle buildStyle(List<Variant> variants) {
-    final result = style == null ? RemixCheckboxStyle.baseForm() : style!;
+    final result = style == null ? RemixCheckboxStyle.base() : style!;
 
     return result.applyVariants(variants);
   }

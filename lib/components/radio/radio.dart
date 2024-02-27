@@ -29,7 +29,7 @@ class RemixRadio extends StatelessWidget
   final List<Variant> variants;
 
   RemixRadioStyle buildStyle(List<Variant> variants) {
-    final result = style == null ? RemixRadioStyle.baseForm() : style!;
+    final result = style == null ? RemixRadioStyle.base() : style!;
     return result.applyVariants(variants);
   }
 

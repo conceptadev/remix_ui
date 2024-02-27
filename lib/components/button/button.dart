@@ -39,7 +39,7 @@ class RemixButton extends StatelessWidget
   final List<Variant> variants;
 
   RemixButtonStyle buildStyle(List<Variant> variants) {
-    final result = style == null ? RemixButtonStyle.baseForm() : style!;
+    final result = style == null ? RemixButtonStyle.base() : style!;
     return result.applyVariants(variants);
   }
 
