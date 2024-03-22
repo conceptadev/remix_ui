@@ -13,7 +13,7 @@ class RemixButtonStyle extends StyleRecipe<RemixButtonStyle> {
   final Style icon;
   final Style label;
 
-  factory RemixButtonStyle.baseForm() {
+  factory RemixButtonStyle.base() {
     return RemixButtonStyle(
       container: _container(),
       icon: _icon(),

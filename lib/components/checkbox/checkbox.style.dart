@@ -15,7 +15,7 @@ class RemixCheckboxStyle extends StyleRecipe<RemixCheckboxStyle> {
   final Style icon;
   final Style label;
 
-  factory RemixCheckboxStyle.baseForm() {
+  factory RemixCheckboxStyle.base() {
     return RemixCheckboxStyle(
       flexContainer: _flexContainerStyle(),
       innerContainer: _innerContainerStyle(),

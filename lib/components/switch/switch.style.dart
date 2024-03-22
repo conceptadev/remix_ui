@@ -12,7 +12,7 @@ class RemixSwitchStyle extends StyleRecipe<RemixSwitchStyle> {
   final Style outerFlexContainer;
   final Style innerContainer;
 
-  factory RemixSwitchStyle.baseForm() {
+  factory RemixSwitchStyle.base() {
     return RemixSwitchStyle(
       outerFlexContainer: _outerFlexContainerStyle(),
       innerContainer: _innerContainerStyle(),

@@ -16,7 +16,7 @@ class RemixRadioStyle extends StyleRecipe<RemixRadioStyle> {
   final Style label;
   final Style row;
 
-  factory RemixRadioStyle.baseForm() {
+  factory RemixRadioStyle.base() {
     return RemixRadioStyle(
       outerContainer: _outerContainerStyle(),
       innerContainer: _innerContainerStyle(),
