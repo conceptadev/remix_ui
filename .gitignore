@@ -22,3 +22,6 @@ doc/api/
 
 .DS_Store
 android/local.properties
+
+# FVM Version Cache
+.fvm/
