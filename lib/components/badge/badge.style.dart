@@ -54,9 +54,6 @@ Style _container() => Style(
       box.padding.vertical(2),
       box.borderRadius(20),
       box.color.black(),
-      onHover(
-        box.color(Colors.black.withOpacity(0.8)),
-      ),
     );
 
 Style _label() => Style.text(

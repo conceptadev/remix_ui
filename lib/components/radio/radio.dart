@@ -50,10 +50,8 @@ class RemixRadio extends StatelessWidget
         children: [
           Box(
             style: style.outerContainer,
-            child: AnimatedBox(
+            child: Box(
               style: style.innerContainer,
-              duration: const Duration(milliseconds: 150),
-              curve: Curves.bounceInOut,
             ),
           ),
           if (label != null)

@@ -67,14 +67,18 @@ Style _flexContainerStyle() => Style(
       flex.gap(6),
     );
 
-Style _innerContainerStyle() => Style(
-      box.borderRadius.all(7),
-      width(20),
-      height(20),
-      border(color: const Color.fromARGB(115, 3, 3, 3), width: 1.5),
-      CheckboxState.checked(
-        backgroundColor(Colors.black87),
+Style _innerContainerStyle() => AnimatedStyle(
+      Style(
+        box.borderRadius.all(7),
+        width(20),
+        height(20),
+        border(color: const Color.fromARGB(115, 3, 3, 3), width: 1.5),
+        CheckboxState.checked(
+          backgroundColor(Colors.black87),
+        ),
       ),
+      duration: const Duration(milliseconds: 150),
+      curve: Curves.easeInOut,
     );
 
 Style _iconStyle() => Style(

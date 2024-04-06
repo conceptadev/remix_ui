@@ -51,9 +51,8 @@ class RemixCheckbox extends StatelessWidget
       child: HBox(
         style: style.flexContainer,
         children: [
-          AnimatedBox(
+          Box(
             style: style.innerContainer,
-            duration: const Duration(milliseconds: 150),
             child: StyledIcon(
               checked ? iconChecked : iconUnchecked,
               style: style.icon,
