@@ -12,7 +12,7 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: RemixCheckbox(
-            checked: isChecked,
+            value: isChecked,
             label: 'Checkbox',
             onChanged: (value) {
               expect(value, !isChecked);
@@ -32,7 +32,7 @@ void main() {
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
           body: RemixCheckbox(
-            checked: false,
+            value: false,
             disabled: true,
             onChanged: (value) {
               didCallOnChanged = true;
@@ -52,7 +52,7 @@ void main() {
       for (var isChecked in [true, false]) {
         await tester.pumpWidget(MaterialApp(
           home: RemixCheckbox(
-            checked: isChecked,
+            value: isChecked,
             label: 'Checkbox',
             onChanged: (value) {},
           ),
@@ -60,7 +60,7 @@ void main() {
 
         expect(
           find.byWidgetPredicate(
-            (widget) => widget is RemixCheckbox && widget.checked == isChecked,
+            (widget) => widget is RemixCheckbox && widget.value == isChecked,
           ),
           findsOneWidget,
         );
@@ -72,7 +72,7 @@ void main() {
 
       await tester.pumpWidget(MaterialApp(
         home: RemixCheckbox(
-          checked: false,
+          value: false,
           label: label,
           onChanged: (value) {},
         ),
@@ -94,7 +94,7 @@ void main() {
       for (var isChecked in [true, false]) {
         await tester.pumpWidget(MaterialApp(
           home: RemixCheckbox(
-            checked: isChecked,
+            value: isChecked,
             iconChecked: iconChecked,
             iconUnchecked: iconUnchecked,
             label: 'Checkbox',

@@ -6,36 +6,39 @@ import 'package:remix_ui/components/checkbox/checkbox.variants.dart';
 import 'tokens/checkbox_spec.dart';
 import 'tokens/checkbox_util.dart';
 
-final $defaultCheckboxStyle = AnimatedStyle(
-  Style(
-    // Flex Container
-    $remix.checkbox.flexContainer.mainAxisAlignment.center(),
-    $remix.checkbox.flexContainer.crossAxisAlignment.center(),
-    $remix.checkbox.flexContainer.mainAxisSize.min(),
-    $remix.checkbox.flexContainer.gap(6),
+final $defaultCheckboxStyle = Style(
+  // Flex Container
+  $remix.checkbox.flexContainer.mainAxisAlignment.center(),
+  $remix.checkbox.flexContainer.crossAxisAlignment.center(),
+  $remix.checkbox.flexContainer.mainAxisSize.min(),
+  $remix.checkbox.flexContainer.gap(6),
+  // Inner Container
+  $remix.checkbox.innerContainer.borderRadius.all(7),
+  $remix.checkbox.innerContainer.width(20),
+  $remix.checkbox.innerContainer.height(20),
+  $remix.checkbox.innerContainer.border(
+    color: const Color.fromARGB(115, 3, 3, 3),
+    width: 1.5,
+  ),
+  // Label
+  $remix.checkbox.label.style.fontSize(16),
+  $remix.checkbox.label.style.color.black87(),
+
+  // Checked
+  CheckboxState.checked(
     // Inner Container
-    $remix.checkbox.innerContainer.borderRadius.all(7),
-    $remix.checkbox.innerContainer.width(20),
-    $remix.checkbox.innerContainer.height(20),
-    $remix.checkbox.innerContainer.border(
-      color: const Color.fromARGB(115, 3, 3, 3),
-      width: 1.5,
-    ),
+    $remix.checkbox.innerContainer.color.black87(),
+    // Icon
+    $remix.checkbox.icon.color.white(),
+    $remix.checkbox.icon.size(15),
     // Label
     $remix.checkbox.label.style.fontSize(16),
     $remix.checkbox.label.style.bold(),
     $remix.checkbox.label.style.color.black87(),
-    // Checked
-    CheckboxState.checked(
-      // Inner Container
-      $remix.checkbox.innerContainer.color.black87(),
-      // Icon
-      $remix.checkbox.icon.color.white(),
-      $remix.checkbox.icon.size(15),
-    ),
   ),
-  duration: Durations.extralong2,
-  curve: Curves.bounceInOut,
+).animate(
+  curve: Curves.easeInOut,
+  duration: const Duration(milliseconds: 200),
 );
 
 class RemixCheckbox extends StatelessWidget {
@@ -43,7 +46,7 @@ class RemixCheckbox extends StatelessWidget {
     super.key,
     this.label,
     this.disabled = false,
-    this.checked = false,
+    this.value = false,
     this.onChanged,
     this.iconChecked = Icons.check_rounded,
     this.iconUnchecked,
@@ -53,7 +56,7 @@ class RemixCheckbox extends StatelessWidget {
 
   final String? label;
   final bool disabled;
-  final bool checked;
+  final bool value;
   final IconData iconChecked;
   final IconData? iconUnchecked;
   final ValueChanged<bool>? onChanged;
@@ -66,29 +69,35 @@ class RemixCheckbox extends StatelessWidget {
   Widget build(BuildContext context) {
     return MixBuilder(
       style: $defaultCheckboxStyle.applyVariant(
-        checked ? CheckboxState.checked : CheckboxState.unchecked,
+        value ? CheckboxState.checked : CheckboxState.unchecked,
       ),
       builder: (mix) {
         final spec = CheckboxSpec.of(mix);
-
+        final duration = mix.animation?.duration ?? Duration.zero;
+        final curve = mix.animation?.curve ?? Curves.linear;
         return Pressable(
           onPress:
-              onChanged == null || disabled ? null : () => onChanged!(!checked),
+              onChanged == null || disabled ? null : () => onChanged!(!value),
           child: MixedFlex(
             spec: spec.flexContainer,
             direction: Axis.horizontal,
             children: [
-              MixedBox(
+              AnimatedMixedBox(
                 spec: spec.innerContainer,
-                child: MixedIcon(
-                  checked ? iconChecked : iconUnchecked,
+                duration: duration,
+                child: AnimatedMixedIcon(
+                  icon: value ? iconChecked : iconUnchecked,
                   spec: spec.icon,
+                  duration: duration,
+                  curve: curve,
                 ),
               ),
               if (label != null)
-                MixedText(
+                AnimatedMixedText(
                   text: label!,
                   spec: spec.label,
+                  duration: duration,
+                  curve: curve,
                 ),
             ],
           ),

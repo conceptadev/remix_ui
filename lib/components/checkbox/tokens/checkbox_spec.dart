@@ -51,5 +51,10 @@ class CheckboxSpec extends Spec<CheckboxSpec> {
   }
 
   @override
-  List<Object?> get props => [flexContainer, innerContainer, icon, label];
+  List<Object?> get props => [
+        flexContainer,
+        innerContainer,
+        icon,
+        label,
+      ];
 }

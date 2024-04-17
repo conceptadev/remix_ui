@@ -20,23 +20,23 @@ class CheckboxSpecUtility<T extends SpecAttribute>
   CheckboxSpecUtility(super.builder);
 
   BoxSpecUtility get innerContainer => BoxSpecUtility(
-        (innerContainer) => call(innerContainer: innerContainer),
+        (innerContainer) => only(innerContainer: innerContainer),
       );
 
   FlexSpecUtility get flexContainer => FlexSpecUtility(
-        (flexContainer) => call(flexContainer: flexContainer),
+        (flexContainer) => only(flexContainer: flexContainer),
       );
 
   IconSpecUtility get icon => IconSpecUtility(
-        (icon) => call(icon: icon),
+        (icon) => only(icon: icon),
       );
 
   TextSpecUtility get label => TextSpecUtility(
-        (label) => call(label: label),
+        (label) => only(label: label),
       );
 
   @override
-  T call({
+  T only({
     FlexSpecAttribute flexContainer = const FlexSpecAttribute(),
     BoxSpecAttribute innerContainer = const BoxSpecAttribute(),
     IconSpecAttribute icon = const IconSpecAttribute(),
