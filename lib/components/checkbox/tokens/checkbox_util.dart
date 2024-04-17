@@ -2,19 +2,6 @@ import 'package:mix/mix.dart';
 
 import 'checkbox_attr.dart';
 
-final $remix = RemixComponentTokens();
-
-class RemixComponentTokens {
-  final checkbox = CheckboxSpecUtility(
-    (attr) => CheckboxSpecAttribute(
-      flexContainer: attr.flexContainer,
-      innerContainer: attr.innerContainer,
-      icon: attr.icon,
-      label: attr.label,
-    ),
-  );
-}
-
 class CheckboxSpecUtility<T extends SpecAttribute>
     extends SpecUtility<T, CheckboxSpecAttribute> {
   CheckboxSpecUtility(super.builder);

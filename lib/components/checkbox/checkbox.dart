@@ -2,44 +2,55 @@ import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
 
 import 'package:remix_ui/components/checkbox/checkbox.variants.dart';
+import 'package:remix_ui/components/checkbox/tokens/checkbox_attr.dart';
 
 import 'tokens/checkbox_spec.dart';
 import 'tokens/checkbox_util.dart';
 
-final $defaultCheckboxStyle = Style(
-  // Flex Container
-  $remix.checkbox.flexContainer.mainAxisAlignment.center(),
-  $remix.checkbox.flexContainer.crossAxisAlignment.center(),
-  $remix.checkbox.flexContainer.mainAxisSize.min(),
-  $remix.checkbox.flexContainer.gap(6),
-  // Inner Container
-  $remix.checkbox.innerContainer.borderRadius.all(7),
-  $remix.checkbox.innerContainer.width(20),
-  $remix.checkbox.innerContainer.height(20),
-  $remix.checkbox.innerContainer.border(
-    color: const Color.fromARGB(115, 3, 3, 3),
-    width: 1.5,
-  ),
-  // Label
-  $remix.checkbox.label.style.fontSize(16),
-  $remix.checkbox.label.style.color.black87(),
+AnimatedStyle $defaultCheckboxStyle() {
+  final checkbox = CheckboxSpecUtility((value) => CheckboxSpecAttribute(
+        flexContainer: value.flexContainer,
+        innerContainer: value.innerContainer,
+        icon: value.icon,
+        label: value.label,
+      ));
 
-  // Checked
-  CheckboxState.checked(
+  return Style(
+    // Flex Container
+    checkbox.flexContainer.mainAxisAlignment.center(),
+    checkbox.flexContainer.crossAxisAlignment.center(),
+    checkbox.flexContainer.mainAxisSize.min(),
+    checkbox.flexContainer.gap(6),
     // Inner Container
-    $remix.checkbox.innerContainer.color.black87(),
-    // Icon
-    $remix.checkbox.icon.color.white(),
-    $remix.checkbox.icon.size(15),
+    checkbox.innerContainer.borderRadius.all(7),
+    checkbox.innerContainer.width(20),
+    checkbox.innerContainer.height(20),
+    checkbox.innerContainer.border(
+      color: const Color.fromARGB(115, 3, 3, 3),
+      width: 1.5,
+    ),
     // Label
-    $remix.checkbox.label.style.fontSize(16),
-    $remix.checkbox.label.style.bold(),
-    $remix.checkbox.label.style.color.black87(),
-  ),
-).animate(
-  curve: Curves.easeInOut,
-  duration: const Duration(milliseconds: 200),
-);
+    checkbox.label.style.fontSize(16),
+    checkbox.label.style.color.black87(),
+    checkbox.icon.color.white(),
+
+    // Checked
+    CheckboxState.checked(
+      // Inner Container
+      checkbox.innerContainer.color.black87(),
+      // Icon
+      checkbox.icon.color.white(),
+      checkbox.icon.size(15),
+      // Label
+      checkbox.label.style.fontSize(16),
+      checkbox.label.style.bold(),
+      checkbox.label.style.color.black87(),
+    ),
+  ).animate(
+    curve: Curves.easeInOut,
+    duration: const Duration(milliseconds: 200),
+  );
+}
 
 class RemixCheckbox extends StatelessWidget {
   RemixCheckbox({
@@ -52,7 +63,7 @@ class RemixCheckbox extends StatelessWidget {
     this.iconUnchecked,
     Style? style,
     this.variants = const [],
-  }) : style = style ?? $defaultCheckboxStyle;
+  }) : style = style ?? $defaultCheckboxStyle();
 
   final String? label;
   final bool disabled;
@@ -68,7 +79,7 @@ class RemixCheckbox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MixBuilder(
-      style: $defaultCheckboxStyle.applyVariant(
+      style: style.applyVariant(
         value ? CheckboxState.checked : CheckboxState.unchecked,
       ),
       builder: (mix) {
