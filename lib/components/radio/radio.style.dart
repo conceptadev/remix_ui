@@ -70,21 +70,17 @@ Style _outerContainerStyle() => Style(
       box.border.all(width: 1.5, color: Colors.black87),
     );
 
-Style _innerContainerStyle() => AnimatedStyle(
-      Style(
-        box.borderRadius.all(10),
-        box.color.black87(),
-        RadioState.active(
-          box.width(8.5),
-          box.height(8.5),
-        ),
-        RadioState.inactive(
-          box.width(0),
-          box.height(0),
-        ),
+Style _innerContainerStyle() => Style(
+      box.borderRadius.all(10),
+      box.color.black87(),
+      RadioState.active(
+        box.width(8.5),
+        box.height(8.5),
       ),
-      duration: const Duration(milliseconds: 150),
-      curve: Curves.bounceInOut,
+      RadioState.inactive(
+        box.width(0),
+        box.height(0),
+      ),
     );
 
 Style _labelStyle() => Style(
