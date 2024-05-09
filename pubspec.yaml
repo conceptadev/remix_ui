@@ -11,8 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  mix: 
-    path: ../mix
+  mix: ^0.9.0
 
   cupertino_icons: ^1.0.2
   flutter_hooks: ^0.18.4

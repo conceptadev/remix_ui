@@ -62,36 +62,36 @@ class RemixRadioStyle extends StyleRecipe<RemixRadioStyle> {
 }
 
 Style _outerContainerStyle() => Style(
-      box.width(16),
-      box.height(16),
-      box.alignment.center(),
-      box.borderRadius.all(10),
-      box.color.transparent(),
-      box.border.all(width: 1.5, color: Colors.black87),
+      $box.width(16),
+      $box.height(16),
+      $box.alignment.center(),
+      $box.borderRadius.all(10),
+      $box.color.transparent(),
+      $box.border.all(width: 1.5, color: Colors.black87),
     );
 
 Style _innerContainerStyle() => Style(
-      box.borderRadius.all(10),
-      box.color.black87(),
+      $box.borderRadius.all(10),
+      $box.color.black87(),
       RadioState.active(
-        box.width(8.5),
-        box.height(8.5),
+        $box.width(8.5),
+        $box.height(8.5),
       ),
       RadioState.inactive(
-        box.width(0),
-        box.height(0),
+        $box.width(0),
+        $box.height(0),
       ),
     );
 
 Style _labelStyle() => Style(
-      text.style.fontSize(16),
-      text.style.bold(),
-      text.style.color.black87(),
+      $text.style.fontSize(16),
+      $text.style.bold(),
+      $text.style.color.black87(),
     );
 
 Style _hboxStyle() => Style(
-      flex.mainAxisAlignment.center(),
-      flex.crossAxisAlignment.center(),
-      flex.mainAxisSize.min(),
-      flex.gap(6),
+      $flex.mainAxisAlignment.center(),
+      $flex.crossAxisAlignment.center(),
+      $flex.mainAxisSize.min(),
+      $flex.gap(6),
     );

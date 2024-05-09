@@ -78,25 +78,26 @@ class RemixCheckbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MixBuilder(
+    final duration = kFloatingActionButtonSegue;
+    final curve = Curves.easeInOut;
+    return SpecBuilder(
       style: style.applyVariant(
         value ? CheckboxState.checked : CheckboxState.unchecked,
       ),
-      builder: (mix) {
-        final spec = CheckboxSpec.of(mix);
-        final duration = mix.animation?.duration ?? Duration.zero;
-        final curve = mix.animation?.curve ?? Curves.linear;
+      builder: (context) {
+        final spec = CheckboxSpec.of(context);
+// Create the animation
         return Pressable(
           onPress:
               onChanged == null || disabled ? null : () => onChanged!(!value),
-          child: MixedFlex(
+          child: FlexSpecWidget(
             spec: spec.flexContainer,
             direction: Axis.horizontal,
             children: [
-              AnimatedMixedBox(
+              AnimatedBoxSpecWidget(
                 spec: spec.innerContainer,
                 duration: duration,
-                child: AnimatedMixedIcon(
+                child: AnimatedIconSpecWidget(
                   icon: value ? iconChecked : iconUnchecked,
                   spec: spec.icon,
                   duration: duration,
@@ -104,8 +105,8 @@ class RemixCheckbox extends StatelessWidget {
                 ),
               ),
               if (label != null)
-                AnimatedMixedText(
-                  text: label!,
+                AnimatedTextSpecWidget(
+                  label!,
                   spec: spec.label,
                   duration: duration,
                   curve: curve,

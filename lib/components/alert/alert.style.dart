@@ -68,37 +68,37 @@ class RemixAlertStyle extends StyleRecipe<RemixAlertStyle> {
 }
 
 Style _outerRowContainer() => Style(
-      flex.gap(8),
-      box.padding(16),
-      box.borderRadius(8),
-      box.border.width(1),
-      box.border.color.redAccent(),
-      flex.mainAxisSize.min(),
-      flex.mainAxisAlignment.start(),
-      flex.crossAxisAlignment.start(),
+      $flex.gap(8),
+      $box.padding(16),
+      $box.borderRadius(8),
+      $box.border.width(1),
+      $box.border.color.redAccent(),
+      $flex.mainAxisSize.min(),
+      $flex.mainAxisAlignment.start(),
+      $flex.crossAxisAlignment.start(),
     );
 
 Style _innerColumnContainer() => Style(
-      flex.gap(2),
-      flex.mainAxisSize.min(),
-      flex.mainAxisAlignment.start(),
-      flex.crossAxisAlignment.start(),
+      $flex.gap(2),
+      $flex.mainAxisSize.min(),
+      $flex.mainAxisAlignment.start(),
+      $flex.crossAxisAlignment.start(),
       flexible.expanded(),
     );
 
 Style _title() => Style(
-      text.style.fontSize(14),
-      text.style.fontWeight.w600(),
-      text.style.color.redAccent(),
+      $text.style.fontSize(14),
+      $text.style.fontWeight.w600(),
+      $text.style.color.redAccent(),
     );
 
 Style _subtitle() => Style(
-      text.style.fontSize(14),
-      text.style.fontWeight.normal(),
-      text.style.color.redAccent(),
+      $text.style.fontSize(14),
+      $text.style.fontWeight.normal(),
+      $text.style.color.redAccent(),
     );
 
 Style _icon() => Style(
-      icon.size(20),
-      icon.color.redAccent(),
+      $icon.size(20),
+      $icon.color.redAccent(),
     );

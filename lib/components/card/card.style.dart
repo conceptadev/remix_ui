@@ -39,8 +39,8 @@ class RemixCardStyle extends StyleRecipe<RemixCardStyle> {
 }
 
 Style _container() => Style(
-      box.padding(16),
-      box.elevation(1),
-      box.borderRadius(8),
-      box.color.white(),
+      $box.padding(16),
+      $box.elevation(1),
+      $box.borderRadius(8),
+      $box.color.white(),
     );

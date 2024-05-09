@@ -60,25 +60,25 @@ class RemixListTileStyle extends StyleRecipe<RemixListTileStyle> {
 }
 
 Style _outerRowContainer() => Style(
-      flex.gap(16),
+      $flex.gap(16),
     );
 
 Style _innerColumnContainer() => Style(
-      flex.mainAxisAlignment.center(),
-      flex.mainAxisSize.min(),
-      flex.crossAxisAlignment.start(),
-      flex.gap(4),
+      $flex.mainAxisAlignment.center(),
+      $flex.mainAxisSize.min(),
+      $flex.crossAxisAlignment.start(),
+      $flex.gap(4),
     );
 
-Style _title() => Style.text(
-      text.style.fontSize(14),
-      text.style.fontWeight.w600(),
-      text.style.color.black(),
+Style _title() => Style(
+      $text.style.fontSize(14),
+      $text.style.fontWeight.w600(),
+      $text.style.color.black(),
     );
 
-Style _subtitle() => Style.text(
-      text.style.fontSize(14),
-      text.style.fontWeight.normal(),
-      text.style.color.grey(),
-      text.maxLines(2),
+Style _subtitle() => Style(
+      $text.style.fontSize(14),
+      $text.style.fontWeight.normal(),
+      $text.style.color.grey(),
+      $text.maxLines(2),
     );

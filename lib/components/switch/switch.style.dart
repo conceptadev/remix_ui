@@ -48,26 +48,26 @@ class RemixSwitchStyle extends StyleRecipe<RemixSwitchStyle> {
 }
 
 Style _outerFlexContainerStyle() => Style(
-      box.width(32),
-      box.height(16),
+      $box.width(32),
+      $box.height(16),
       border.width(2),
       border.strokeAlign(BorderSide.strokeAlignOutside),
-      box.borderRadius(20),
+      $box.borderRadius(20),
       SwitchState.active(
-        box.color.black(),
+        $box.color.black(),
         border.color.black(),
-        box.alignment.centerRight(),
+        $box.alignment.centerRight(),
       ),
       SwitchState.inactive(
-        box.alignment.centerLeft(),
-        box.color.grey.shade300(),
+        $box.alignment.centerLeft(),
+        $box.color.grey.shade300(),
         border.color.grey.shade300(),
       ),
     );
 
 Style _innerContainerStyle() => Style(
-      box.borderRadius(10),
+      $box.borderRadius(10),
       width(16),
       height(16),
-      box.color.white(),
+      $box.color.white(),
     );

@@ -1,8 +1,7 @@
 import 'package:mix/mix.dart';
 import 'package:remix_ui/components/checkbox/tokens/checkbox_spec.dart';
 
-class CheckboxSpecAttribute
-    extends SpecAttribute<CheckboxSpecAttribute, CheckboxSpec> {
+class CheckboxSpecAttribute extends SpecAttribute<CheckboxSpec> {
   const CheckboxSpecAttribute({
     this.flexContainer = const FlexSpecAttribute(),
     this.innerContainer = const BoxSpecAttribute(),

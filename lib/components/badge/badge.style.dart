@@ -46,18 +46,18 @@ class RemixBadgeStyle extends StyleRecipe<RemixBadgeStyle> {
 }
 
 Style _container() => Style(
-      flex.mainAxisAlignment.center(),
-      flex.mainAxisSize.min(),
-      flex.crossAxisAlignment.center(),
-      flex.gap(4),
-      box.padding.horizontal(10),
-      box.padding.vertical(2),
-      box.borderRadius(20),
-      box.color.black(),
+      $flex.mainAxisAlignment.center(),
+      $flex.mainAxisSize.min(),
+      $flex.crossAxisAlignment.center(),
+      $flex.gap(4),
+      $box.padding.horizontal(10),
+      $box.padding.vertical(2),
+      $box.borderRadius(20),
+      $box.color.black(),
     );
 
-Style _label() => Style.text(
-      text.style.fontSize(12),
-      text.style.fontWeight.w600(),
-      text.style.color.white(),
+Style _label() => Style(
+      $text.style.fontSize(12),
+      $text.style.fontWeight.w600(),
+      $text.style.color.white(),
     );

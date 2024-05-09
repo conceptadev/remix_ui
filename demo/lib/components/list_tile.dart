@@ -14,10 +14,10 @@ Widget buildCheckboxUseCase(BuildContext context) {
       leading: RemixAvatar(
         style: RemixAvatarStyle.base().copyWith(
           container: Style(
-            height(60),
-            width(60),
-            borderRadius(6),
-            box.color(
+            $box.height(60),
+            $box.width(60),
+            $box.borderRadius(6),
+            $box.color(
               Colors.black26,
             ),
           ),

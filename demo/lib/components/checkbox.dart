@@ -14,10 +14,10 @@ Widget buildCheckboxUseCase(BuildContext context) {
       children: [
         Box(
           style: Style(
-            box.color.grey(),
-            box.height(20),
-            box.width(20),
-            box.borderRadius(4),
+            $box.color.grey(),
+            $box.height(20),
+            $box.width(20),
+            $box.borderRadius(4),
           ),
         ),
         RemixCheckbox(

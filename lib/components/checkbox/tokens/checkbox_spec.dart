@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
 import 'package:remix_ui/components/checkbox/tokens/checkbox_attr.dart';
 
@@ -35,7 +36,9 @@ class CheckboxSpec extends Spec<CheckboxSpec> {
     );
   }
 
-  static CheckboxSpec of(MixData mix) {
+  static CheckboxSpec of(BuildContext context) {
+    final mix = MixProvider.of(context);
+
     return mix.attributeOf<CheckboxSpecAttribute>()?.resolve(mix) ??
         const CheckboxSpec.empty();
   }
