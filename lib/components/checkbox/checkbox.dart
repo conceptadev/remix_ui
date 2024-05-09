@@ -7,6 +7,9 @@ import 'package:remix_ui/components/checkbox/tokens/checkbox_attr.dart';
 import 'tokens/checkbox_spec.dart';
 import 'tokens/checkbox_util.dart';
 
+const kNoAnimation =
+    AnimatedData(duration: Duration.zero, curve: Curves.linear);
+
 AnimatedStyle $defaultCheckboxStyle() {
   final checkbox = CheckboxSpecUtility((value) => CheckboxSpecAttribute(
         flexContainer: value.flexContainer,
@@ -78,15 +81,15 @@ class RemixCheckbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final duration = kFloatingActionButtonSegue;
-    final curve = Curves.easeInOut;
     return SpecBuilder(
       style: style.applyVariant(
         value ? CheckboxState.checked : CheckboxState.unchecked,
       ),
       builder: (context) {
         final spec = CheckboxSpec.of(context);
-// Create the animation
+        final mix = MixProvider.of(context);
+        final animationData = mix.animation ?? kNoAnimation;
+
         return Pressable(
           onPress:
               onChanged == null || disabled ? null : () => onChanged!(!value),
@@ -96,20 +99,20 @@ class RemixCheckbox extends StatelessWidget {
             children: [
               AnimatedBoxSpecWidget(
                 spec: spec.innerContainer,
-                duration: duration,
+                duration: animationData.duration,
                 child: AnimatedIconSpecWidget(
                   icon: value ? iconChecked : iconUnchecked,
                   spec: spec.icon,
-                  duration: duration,
-                  curve: curve,
+                  duration: animationData.duration,
+                  curve: animationData.curve,
                 ),
               ),
               if (label != null)
                 AnimatedTextSpecWidget(
                   label!,
                   spec: spec.label,
-                  duration: duration,
-                  curve: curve,
+                  duration: animationData.duration,
+                  curve: animationData.curve,
                 ),
             ],
           ),
