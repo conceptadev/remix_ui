@@ -17,14 +17,14 @@ Widget buildCheckboxUseCase(BuildContext context) {
         RemixAvatar(
           style: RemixAvatarStyle(
             container: Style(
-              box.height(60),
-              box.width(60),
-              box.borderRadius(20),
-              box.color(
+              $box.height(60),
+              $box.width(60),
+              $box.borderRadius(20),
+              $box.color(
                 Colors.cyanAccent.shade200.withAlpha(60),
               ),
-              icon.size(30),
-              icon.color(Colors.cyanAccent),
+              $icon.size(30),
+              $icon.color(Colors.cyanAccent),
             ),
           ),
           imageBuilder: (style) => const StyledIcon(Icons.person),
@@ -33,8 +33,8 @@ Widget buildCheckboxUseCase(BuildContext context) {
         RemixAvatar(
           style: RemixAvatarStyle.base().copyWith(
             container: Style(
-              box.height(50),
-              box.width(50),
+              $box.height(50),
+              $box.width(50),
             ),
           ),
           imageBuilder: (style) =>
@@ -47,8 +47,8 @@ Widget buildCheckboxUseCase(BuildContext context) {
           ),
           style: RemixAvatarStyle.base().copyWith(
             container: Style(
-              box.height(40),
-              box.width(40),
+              $box.height(40),
+              $box.width(40),
             ),
           ),
         ),

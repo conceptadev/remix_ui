@@ -54,7 +54,7 @@ class RemixButton extends StatelessWidget
     RemixButtonStyle buttonStyle,
   ) =>
       [
-        _buildLoadingIndicator(MixData.create(context, buttonStyle.icon)),
+        _buildLoadingIndicator(context),
         if (loadingLabel != null)
           StyledText(
             loadingLabel!,
@@ -62,8 +62,8 @@ class RemixButton extends StatelessWidget
           ),
       ];
 
-  Widget _buildLoadingIndicator(MixData mix) {
-    final icon = IconSpec.of(mix);
+  Widget _buildLoadingIndicator(BuildContext context) {
+    final icon = IconSpec.of(context);
     const indicatorWidth = 2.5;
 
     return SizedBox(
@@ -87,7 +87,7 @@ class RemixButton extends StatelessWidget
     final style = buildStyle([size, type, ...variants]);
 
     return PressableBox(
-      onPressed: disabled || loading ? null : onPressed,
+      onPress: disabled || loading ? null : onPressed,
       child: HBox(
         style: style.container,
         children: _buildChildren(context, style),

@@ -52,21 +52,21 @@ class RemixAvatarStyle extends StyleRecipe<RemixAvatarStyle> {
 }
 
 Style _container() => Style(
-      box.color.grey.shade100(),
-      box.borderRadius(50),
-      box.alignment.center(),
-      box.width(40),
-      box.height(40),
-      box.clipBehavior.antiAlias(),
-      clip.oval(),
+      $box.color.grey.shade100(),
+      $box.borderRadius(50),
+      $box.alignment.center(),
+      $box.width(40),
+      $box.height(40),
+      $box.clipBehavior.antiAlias(),
+      $with.clipOval(),
     );
 
-Style _label() => Style.text(
-      text.style.fontSize(16),
-      text.style.color.black54(),
-      text.style.fontWeight.bold(),
+Style _label() => Style(
+      $text.style.fontSize(16),
+      $text.style.color.black54(),
+      $text.style.fontWeight.bold(),
     );
 
-Style _image() => Style.image(
-      image.fit.cover(),
+Style _image() => Style(
+      $image.fit.cover(),
     );
